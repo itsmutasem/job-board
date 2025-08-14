@@ -21,7 +21,7 @@ class JobVacancy extends Model
         'type',
         'salary',
         'companyId',
-        'categoryId',
+        'jobCategoryId',
     ];
 
     protected $dates = [
@@ -42,7 +42,7 @@ class JobVacancy extends Model
 
     public function jobCategory()
     {
-        return $this->belongsTo(JobCategory::class, 'categoryId', 'id');
+        return $this->belongsTo(JobCategory::class, 'jobCategoryId', 'id');
     }
 
     public function jobApplications()

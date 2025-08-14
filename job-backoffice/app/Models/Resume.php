@@ -35,4 +35,14 @@ class Resume extends Model
             'deleted_at' => 'datetime'
         ];
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userId', 'id');
+    }
+
+    public function jobApplications()
+    {
+        return $this->belongsTo(JobApplication::class, 'resumeId', 'id');
+    }
 }
