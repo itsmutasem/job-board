@@ -34,4 +34,14 @@ class JobVacancy extends Model
             'deleted_at' => 'datetime',
         ];
     }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'companyId', 'id');
+    }
+
+    public function jobCategory()
+    {
+        return $this->belongsTo(JobCategory::class, 'categoryId', 'id');
+    }
 }

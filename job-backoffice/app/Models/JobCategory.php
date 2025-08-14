@@ -28,4 +28,9 @@ class JobCategory extends Model
             'deleted_at' => 'datetime',
         ];
     }
+
+    public function jobVacancies()
+    {
+        return $this->hasMany(JobVacancy::class, 'categoryId', 'id');
+    }
 }

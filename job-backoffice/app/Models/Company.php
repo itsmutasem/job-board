@@ -37,4 +37,9 @@ class Company extends Model
     {
         return $this->belongsTo(User::class, 'ownerId', 'id');
     }
+
+    public function jobVacancies()
+    {
+        return $this->hasMany(JobVacancy::class, 'companyId', 'id');
+    }
 }
