@@ -34,4 +34,18 @@ class JobApplication extends Model
         ];
     }
 
+    public function jobVacancy()
+    {
+        return $this->belongsTo(JobVacancy::class, 'jobVacancyId', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userId', 'id');
+    }
+
+    public function resume()
+    {
+        return $this->belongsTo(Resume::class, 'resumeId', 'id');
+    }
 }
