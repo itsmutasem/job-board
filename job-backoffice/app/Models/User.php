@@ -26,6 +26,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+    ];
+
+    protected $dates = [
+        'deleted_at',
     ];
 
     /**
@@ -48,6 +53,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'deleted_at' => 'datetime'
         ];
     }
 }
