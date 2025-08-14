@@ -32,4 +32,9 @@ class Company extends Model
             'deleted_at' => 'datetime'
         ];
     }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'ownerId', 'id');
+    }
 }
