@@ -17,13 +17,11 @@ return new class extends Migration
             $table->string('address');
             $table->string('salary');
             $table->string('website')->nullable();
-
-            // Relationships
-            $table->uuid('ownerId');
-            $table->foreign('ownerId')->references('id')->on('users')->onDelete('restrict');
-
             $table->timestamps();
             $table->softDeletes();
+
+            $table->uuid('ownerId');
+            $table->foreign('ownerId')->references('id')->on('users')->onDelete('restrict');
         });
     }
 

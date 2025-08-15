@@ -11,8 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('resumes', function (Blueprint $table) {
-            //
+        Schema::create('resumes', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('filename');
+            $table->string('fileUri');
+            $table->string('contactDetails');
+            $table->longText('education');
+            $table->longText('experience');
+            $table->longText('skills');
+            $table->longText('summary');
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->uuid('userId');
+            $table->foreign('userId')->references('id')->on('users')->onDelete('restrict');
         });
     }
 
@@ -21,8 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('resumes', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('resumes');
     }
 };
