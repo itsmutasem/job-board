@@ -11,8 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('job_applications', function (Blueprint $table) {
-            //
+        Schema::create('job_applications', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
+            $table->float('aiGeneratedScore', 2)->default(0);
+            $table->longText('aiGeneratedFeedback')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+
+            // Relationships
+            $table->uuid('jobVacancyId');
+            $table->foreign('jobVacancyId')->references('id')->on('job_vacancies')->onDelete('restrict');
+
+            $table->uuid('resumeId');
+            $table->foreign('resumeId')->references('id')->on('resumes')->onDelete('restrict');
+
+            $table->uuid('userId');
+            $table->foreign('userId')->references('id')->on('users')->onDelete('restrict');
+
         });
     }
 
