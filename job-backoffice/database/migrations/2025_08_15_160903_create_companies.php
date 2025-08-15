@@ -11,8 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('companies', function (Blueprint $table) {
-            //
+        Schema::create('companies', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('name');
+            $table->string('address');
+            $table->string('salary');
+            $table->string('website')->nullable();
+
+            // Relationships
+            $table->uuid('ownerId');
+            $table->foreign('ownerId')->references('id')->on('users')->onDelete('restrict');
+
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -21,8 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('companies', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('companies');
     }
 };
