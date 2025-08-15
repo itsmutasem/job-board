@@ -23,6 +23,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            // Relationship
             $table->uuid('userId');
             $table->foreign('userId')->references('id')->on('users')->onDelete('restrict');
         });

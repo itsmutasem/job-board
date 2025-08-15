@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            // Relationship
             $table->uuid('ownerId');
             $table->foreign('ownerId')->references('id')->on('users')->onDelete('restrict');
         });
