@@ -68,14 +68,14 @@ class DatabaseSeeder extends Seeder
             $category = JobCategory::where('name', $job['category'])->firstOrFail();
 
             JobVacancy::firstOrCreate([
-                'title' => $job['title']
+                'title' => $job['title'],
+                'companyId' => $company->id,
             ],[
                 'description' => $job['description'],
                 'location' => $job['location'],
                 'type' => $job['type'],
                 'salary' => $job['salary'],
                 'JobCategoryId' => $category->id,
-                'companyId' => $company->id,
             ]);
         }
     }
