@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\JobCategory;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,9 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Seed the root admin
-        User::create([
-            'name' => 'Admin',
+        User::firstOrCreate([
             'email' => 'admin@admin.coom',
+        ],[
+            'name' => 'Admin',
             'password' => Hash::make('123456789'),
             'role' => 'admin',
             'email_verified_at' => now()
@@ -25,5 +27,12 @@ class DatabaseSeeder extends Seeder
 
         // Seed Data to test with
         $jobData = json_decode(file_get_contents(database_path('data/job_data.json')), true);
+
+        // Create Job Categories
+        foreach ($jobData['jobCategories'] as $category) {
+            JobCategory::firstOrCreate([
+                'name' => $category
+            ]);
+        }
     }
 }
