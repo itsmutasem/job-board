@@ -109,6 +109,15 @@ class DatabaseSeeder extends Seeder
                     'education' => $application['resume']['education'],
                 ]);
 
+                // Create Job Applications (part 2)
+                JobApplication::create([
+                    'jobVacancyId' => $jobVacancy->id,
+                    'userId' => $applicant->id,
+                    'resumeId' => $resume->id,
+                    'status' => $application['status'],
+                    'aiGeneratedScore' => $application['aiGeneratedScore'],
+                    'aiGeneratedFeedback' => $application['aiGeneratedFeedback'],
+                ]);
             }
         }
     }
