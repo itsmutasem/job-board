@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Company;
 use App\Models\JobCategory;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -32,6 +33,28 @@ class DatabaseSeeder extends Seeder
         foreach ($jobData['jobCategories'] as $category) {
             JobCategory::firstOrCreate([
                 'name' => $category
+            ]);
+        }
+
+        // Create Companies
+        foreach ($jobData['companies'] as $company) {
+            // Create company owner
+            $companyOwner = User::firstOrCreate([
+                'email' => fake()->unique()->safeEmail(),
+            ],[
+                'name' => fake()->name,
+                'password' => Hash::make('123456789'),
+                'role' => 'company-owner',
+                'email_verified_at' => now()
+            ]);
+            // Create company
+            Company::firstOrCreate([
+                'name' => $company['name']
+            ],[
+               'address' => $company['address'],
+               'industry' => $company['industry'],
+               'website' => $company['website'],
+                'ownerId' => $companyOwner->id,
             ]);
         }
     }
