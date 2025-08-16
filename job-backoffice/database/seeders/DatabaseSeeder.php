@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Company;
 use App\Models\JobCategory;
+use App\Models\JobVacancy;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -55,6 +56,26 @@ class DatabaseSeeder extends Seeder
                'industry' => $company['industry'],
                'website' => $company['website'],
                 'ownerId' => $companyOwner->id,
+            ]);
+        }
+
+        // Create Job Vacancies
+        foreach ($jobData['jobVacancies'] as $job) {
+            // Get the created company
+            $company = Company::where('name', $job['company'])->firstOrFail();
+
+            // Get the created category
+            $category = JobCategory::where('name', $job['category'])->firstOrFail();
+
+            JobVacancy::firstOrCreate([
+                'title' => $job['title']
+            ],[
+                'description' => $job['description'],
+                'location' => $job['location'],
+                'type' => $job['type'],
+                'salary' => $job['salary'],
+                'JobCategoryId' => $category->id,
+                'companyId' => $company->id,
             ]);
         }
     }
