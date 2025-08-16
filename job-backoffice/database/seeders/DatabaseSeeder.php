@@ -3,12 +3,15 @@
 namespace Database\Seeders;
 
 use App\Models\Company;
+use App\Models\JobApplication;
 use App\Models\JobCategory;
 use App\Models\JobVacancy;
+use App\Models\Resume;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use function Laravel\Prompts\password;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,6 +32,7 @@ class DatabaseSeeder extends Seeder
 
         // Seed Data to test with
         $jobData = json_decode(file_get_contents(database_path('data/job_data.json')), true);
+        $jobApplications = json_decode(file_get_contents(database_path('data/job_applications.json')), true);
 
         // Create Job Categories
         foreach ($jobData['jobCategories'] as $category) {
@@ -77,6 +81,23 @@ class DatabaseSeeder extends Seeder
                 'salary' => $job['salary'],
                 'JobCategoryId' => $category->id,
             ]);
+
+            // Create Job Applications (part 1)
+            foreach ($jobApplications['jobApplications'] as $application) {
+                // Get random job vacancy
+                $jobVacancy = JobVacancy::inRandomOrder()->first();
+
+                // Create applicant (job-seeker)
+                $applicant = User::firstOrCreate([
+                    'email' => fake()->unique()->safeEmail()
+                ],[
+                    'name' => fake()->name(),
+                    'password' => Hash::make('123456789'),
+                    'role' => 'job-seeker',
+                    'email_verified_at' => now(),
+                ]);
+
+            }
         }
     }
 }
