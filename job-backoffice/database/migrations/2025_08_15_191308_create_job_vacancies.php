@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('job_vacancies', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('location');
             $table->string('salary');
             $table->enum('type', ['Full-Time', 'Contract', 'Remote', 'Hybrid'])->default('Full-Time');
