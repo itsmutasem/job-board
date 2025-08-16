@@ -22,5 +22,8 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
             'email_verified_at' => now()
         ]);
+
+        // Seed Data to test with
+        $jobData = json_decode(file_get_contents(database_path('data/job_data.json')), true);
     }
 }
