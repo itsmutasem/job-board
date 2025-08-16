@@ -97,6 +97,18 @@ class DatabaseSeeder extends Seeder
                     'email_verified_at' => now(),
                 ]);
 
+                // Create Resume
+                $resume = Resume::create([
+                    'userId' => $applicant->id,
+                    'filename' => $application['resume']['filename'],
+                    'fileUri' => $application['resume']['fileUri'],
+                    'contactDetails' => $application['resume']['contactDetails'],
+                    'summary' => $application['resume']['summary'],
+                    'skills' => $application['resume']['skills'],
+                    'experience' => $application['resume']['experience'],
+                    'education' => $application['resume']['education'],
+                ]);
+
             }
         }
     }
