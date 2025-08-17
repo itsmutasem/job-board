@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
     {
         // Seed the root admin
         User::firstOrCreate([
-            'email' => 'admin@admin.coom',
+            'email' => 'admin@admin.com',
         ],[
             'name' => 'Admin',
             'password' => Hash::make('123456789'),
