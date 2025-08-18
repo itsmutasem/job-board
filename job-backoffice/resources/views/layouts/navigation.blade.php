@@ -25,7 +25,7 @@
             Job Categories
         </x-nav-link>
 
-        <x-nav-link :href="route('jov-vacancy.index')" :active="request()->routeIs('job-vacancy.index')">
+        <x-nav-link :href="route('job-vacancy.index')" :active="request()->routeIs('job-vacancy.index')">
             Job Vacancies
         </x-nav-link>
 
