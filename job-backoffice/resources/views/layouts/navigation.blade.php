@@ -6,4 +6,31 @@
             <span class="text-lg font-semibold text-gray-800">Job Backoffice</span>
         </a>
     </div>
+
+{{--    Navigation links --}}
+    <ul class="flex flex-col px-4 py-6 space-y-2">
+        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            Dashboard
+        </x-nav-link>
+
+        <x-nav-link :href="route('company.index')" :active="request()->routeIs('company.index')">
+            Companies
+        </x-nav-link>
+
+        <x-nav-link :href="route('application.index')" :active="request()->routeIs('application.index')">
+            Job Applications
+        </x-nav-link>
+
+        <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
+            Job Categories
+        </x-nav-link>
+
+        <x-nav-link :href="route('jov-vacancy.index')" :active="request()->routeIs('job-vacancy.index')">
+            Job Vacancies
+        </x-nav-link>
+
+        <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+            Users
+        </x-nav-link>
+    </ul>
 </nav>
