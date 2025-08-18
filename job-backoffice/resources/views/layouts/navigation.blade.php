@@ -32,5 +32,14 @@
         <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
             Users
         </x-nav-link>
+
+        <hr />
+
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <x-nav-link :href="route('logout')" :active="false" class="text-red-500" onclick="event.preventDefault(); this.closest('form').submit();">
+                Logout
+            </x-nav-link>
+        </form>
     </ul>
 </nav>
