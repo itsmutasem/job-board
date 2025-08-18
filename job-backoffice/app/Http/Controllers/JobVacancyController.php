@@ -11,7 +11,7 @@ class JobVacancyController extends Controller
      */
     public function index()
     {
-        //
+        return view('job-vacancy.index');
     }
 
     /**
