@@ -20,7 +20,7 @@
                         <td class="px-6 py-4 text-gray-800">{{ $category->name }}</td>
                         <td>
 {{--                            Edit Button --}}
-                            <a href="{{ route('job-category.edit', $category->id) }}" class="text-blue-500 hover:text-blue-700">Edit</a>
+                            <a href="{{ route('job-categories.edit', $category->id) }}" class="text-blue-500 hover:text-blue-700">Edit</a>
                         </td>
                     </tr>
                 @endforeach
