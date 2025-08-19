@@ -10,16 +10,16 @@
         <table class="min-w-full divide-y divide-gray-200 rounded-lg shadow mt-4 bg-white">
             <thead>
                 <tr>
-                    <th>Category Name</th>
-                    <th>Actions</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Category Name</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($categories as $category)
-                    <tr>
-                        <td>{{ $category->name }}</td>
+                    <tr class="border-b">
+                        <td class="px-6 py-4 text-gray-800">{{ $category->name }}</td>
                         <td>
-                            
+
                         </td>
                     </tr>
                 @endforeach
