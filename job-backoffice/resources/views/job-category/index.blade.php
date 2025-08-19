@@ -21,6 +21,12 @@
                         <td>
 {{--                            Edit Button --}}
                             <a href="{{ route('job-categories.edit', $category->id) }}" class="text-blue-500 hover:text-blue-700">Edit</a>
+{{--                            Archive Button --}}
+                            <form action="{{ route('job-categories.destroy', $category->id) }}" method="POST" class="inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-500 hover:text-red-700">Archive</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
