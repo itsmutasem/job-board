@@ -19,14 +19,16 @@
                     <tr class="border-b">
                         <td class="px-6 py-4 text-gray-800">{{ $category->name }}</td>
                         <td>
-{{--                            Edit Button --}}
-                            <a href="{{ route('job-categories.edit', $category->id) }}" class="text-blue-500 hover:text-blue-700">Edit</a>
-{{--                            Archive Button --}}
-                            <form action="{{ route('job-categories.destroy', $category->id) }}" method="POST" class="inline-block">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-red-500 hover:text-red-700">Archive</button>
-                            </form>
+                            <div class="flex space-x-4">
+    {{--                            Edit Button --}}
+                                <a href="{{ route('job-categories.edit', $category->id) }}" class="text-blue-500 hover:text-blue-700">🖋️ Edit</a>
+    {{--                            Archive Button --}}
+                                <form action="{{ route('job-categories.destroy', $category->id) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-500 hover:text-red-700">🗃️ Archive</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
