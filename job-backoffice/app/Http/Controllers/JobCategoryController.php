@@ -22,7 +22,7 @@ class JobCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('job-category.create');
     }
 
     /**
