@@ -31,7 +31,7 @@ class JobCategoryController extends Controller
      */
     public function store(JobCategoryRequest $request)
     {
-        $validated = $request->validate();
+        $validated = $request->validated();
         JobCategory::create($validated);
         return redirect()->route('job-categories.index')->with('create-job-category', 'Job category created successfully!');
     }
