@@ -5,7 +5,16 @@
         </h2>
     </x-slot>
 
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto p-6">
+        <x-toast-notification />
+
+{{--        Job Category Button --}}
+        <div class="flex justify-end items-center">
+            <a href="{{ route('job-categories.create') }}" class="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
+                Add Job Category
+            </a>
+        </div>
+
 {{--        Job Category Table --}}
         <table class="min-w-full divide-y divide-gray-200 rounded-lg shadow mt-4 bg-white">
             <thead>
@@ -40,3 +49,4 @@
         </div>
     </div>
 </x-app-layout>
+

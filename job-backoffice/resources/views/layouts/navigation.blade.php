@@ -13,23 +13,23 @@
             Dashboard
         </x-nav-link>
 
-        <x-nav-link :href="route('companies.index')" :active="request()->routeIs('company.index')">
+        <x-nav-link :href="route('companies.index')" :active="request()->routeIs('companies.index')">
             Companies
         </x-nav-link>
 
-        <x-nav-link :href="route('job-applications.index')" :active="request()->routeIs('application.index')">
+        <x-nav-link :href="route('job-applications.index')" :active="request()->routeIs('job-applications.index')">
             Job Applications
         </x-nav-link>
 
-        <x-nav-link :href="route('job-categories.index')" :active="request()->routeIs('category.index')">
+        <x-nav-link :href="route('job-categories.index')" :active="request()->routeIs('job-categories.index')">
             Job Categories
         </x-nav-link>
 
-        <x-nav-link :href="route('job-vacancies.index')" :active="request()->routeIs('job-vacancy.index')">
+        <x-nav-link :href="route('job-vacancies.index')" :active="request()->routeIs('job-vacancies.index')">
             Job Vacancies
         </x-nav-link>
 
-        <x-nav-link :href="route('users.index')" :active="request()->routeIs('user.index')">
+        <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
             Users
         </x-nav-link>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JobCategoryRequest;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
 
@@ -22,15 +23,17 @@ class JobCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('job-category.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(JobCategoryRequest $request)
     {
-        //
+        $validated = $request->validated();
+        JobCategory::create($validated);
+        return redirect()->route('job-categories.index')->with('success', 'Job category created successfully!');
     }
 
     /**
