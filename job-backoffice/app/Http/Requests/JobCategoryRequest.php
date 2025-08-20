@@ -22,7 +22,17 @@ class JobCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255|unique:job_categories,name',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'The category name field is required.',
+            'name.unique' => 'The category name has already been taken.',
+            'name.max' => 'The category name must be less then 255 characters.',
+            'name.string' => 'The category name must be a string.',
         ];
     }
 }
