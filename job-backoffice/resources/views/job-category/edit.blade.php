@@ -5,6 +5,32 @@
         </h2>
     </x-slot>
 
-    
+    <div class="overflow-x-auto p-6">
+        <div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
+            <form action="{{ route('job-categories.update', $category->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700">
+                        Category Name
+                    </label>
+                    <input type="text" name="name" id="name" value="{{ old('name'), $category->name }}" class="{{ $errors->has('name') ? 'outline-red-500 outline outline-1' : '' }} mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    @error('name')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="flex justify-end space-x-4">
+                    <a href="{{ route('job-categories.index') }}" class="inline-flex items-center py-2 bg-white text-gray-500 rounded-md hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
+                        Cancel
+                    </a>
+                    <button
+                        type="submit"
+                        class="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
+                        Update Category
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </x-app-layout>
 
