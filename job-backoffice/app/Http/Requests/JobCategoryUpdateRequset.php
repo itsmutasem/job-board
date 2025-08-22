@@ -11,7 +11,7 @@ class JobCategoryUpdateRequset extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class JobCategoryUpdateRequset extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255|unique:job_categories,name,' . $this->category->id,
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'The category name is required.',
+            'name.unique' => 'The category name has already been token.',
+            'name.max' => 'The category name must be less then 255 characters.',
+            'name.string' => 'The category name must be a string.',
         ];
     }
 }
