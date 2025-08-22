@@ -56,9 +56,12 @@ class JobCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(JobCategoryRequest $request, string $id)
     {
-        //
+        $validate = $request->validated();
+        $category = JobCategory::findOrFail($id);
+        $category->update($validate);
+        return redirect()->route('job-$categories.index')->with('update', 'Job category updated successfully!');
     }
 
     /**
