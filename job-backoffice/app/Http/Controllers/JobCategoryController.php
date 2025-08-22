@@ -33,7 +33,7 @@ class JobCategoryController extends Controller
     {
         $validated = $request->validated();
         JobCategory::create($validated);
-        return redirect()->route('job-categories.index')->with('success', 'Job category created successfully!');
+        return redirect()->route('job-categories.index')->with('create', 'Job category created successfully!');
     }
 
     /**

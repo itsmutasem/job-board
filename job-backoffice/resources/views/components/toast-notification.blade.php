@@ -1,6 +1,6 @@
 {{--        Flash Messages --}}
 <div class="fixed inset-x-0 top-6 z-50 flex justify-center">
-    @if(session('success'))
+    @if(session('create'))
         <div
             x-data="{ show: true }"
             x-show="show"
@@ -14,7 +14,7 @@
                 <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2l4-4m6 2a9 9 0 11-18 0a9 9 0 0118 0z" />
                 </svg>
-                <span>{{ session('success') }}</span>
+                <span>{{ session('create') }}</span>
             </div>
 
             <!-- Close (X) Button -->
