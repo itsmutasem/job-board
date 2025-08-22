@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\JobCategoryRequest;
+use App\Http\Requests\JobCategoryCreateRequest;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
 
@@ -29,7 +29,7 @@ class JobCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(JobCategoryRequest $request)
+    public function store(JobCategoryCreateRequest $request)
     {
         $validated = $request->validated();
         JobCategory::create($validated);
@@ -56,7 +56,7 @@ class JobCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(JobCategoryRequest $request, string $id)
+    public function update(JobCategoryCreateRequest $request, string $id)
     {
         $validate = $request->validated();
         $category = JobCategory::findOrFail($id);
