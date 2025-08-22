@@ -49,7 +49,8 @@ class JobCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = JobCategory::findOrFail($id);
+        return view('job-category.edit', compact('category'));
     }
 
     /**
