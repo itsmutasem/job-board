@@ -61,7 +61,7 @@ class JobCategoryController extends Controller
         $validate = $request->validated();
         $category = JobCategory::findOrFail($id);
         $category->update($validate);
-        return redirect()->route('job-$categories.index')->with('update', 'Job category updated successfully!');
+        return redirect()->route('job-categories.index')->with('update', 'Job category updated successfully!');
     }
 
     /**
