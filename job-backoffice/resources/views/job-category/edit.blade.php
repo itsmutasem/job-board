@@ -14,7 +14,7 @@
                     <label for="name" class="block text-sm font-medium text-gray-700">
                         Category Name
                     </label>
-                    <input type="text" name="name" id="name" value="{{ old('name'), $category->name }}" class="{{ $errors->has('name') ? 'outline-red-500 outline outline-1' : '' }} mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <input type="text" name="name" id="name" value="{{ old('name', $category->name) }}" class="{{ $errors->has('name') ? 'outline-red-500 outline outline-1' : '' }} mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     @error('name')
                     <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
