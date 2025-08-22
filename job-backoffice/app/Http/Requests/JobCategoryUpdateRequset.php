@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class JobCategoryUpdateRequset extends FormRequest
 {
@@ -22,7 +23,8 @@ class JobCategoryUpdateRequset extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:job_categories,name,' . $this->category->id,
+        'name' => 'required|string|max:255|unique:job_categories,name,' . $this->$category->id,
+//            'name' => ['required', 'string', 'max:255', Rule::unique('job_categories', 'name')->ignore($this->$category->id)],
         ];
     }
 
