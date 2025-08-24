@@ -41,14 +41,23 @@
                         <td class="px-6 py-4 text-gray-800">{{ $category->name }}</td>
                         <td>
                             <div class="flex space-x-4">
-    {{--                            Edit Button --}}
-                                <a href="{{ route('job-categories.edit', $category->id) }}" class="text-blue-500 hover:text-blue-700">🖋️ Edit</a>
-    {{--                            Archive Button --}}
-                                <form action="{{ route('job-categories.destroy', $category->id) }}" method="POST" class="inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-500 hover:text-red-700">🗃️ Archive</button>
-                                </form>
+                                @if(request()->input('archived') == 'true')
+                                    {{-- Restore Button --}}
+                                    <form action="{{ route('job-categories.restore'), $category->id }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="text-green-500 hover:text-green-700">🔄️ Restore</button>
+                                    </form>
+                                @else
+                                    {{-- Edit Button --}}
+                                    <a href="{{ route('job-categories.edit', $category->id) }}" class="text-blue-500 hover:text-blue-700">🖋️ Edit</a>
+                                    {{-- Archive Button --}}
+                                    <form action="{{ route('job-categories.destroy', $category->id) }}" method="POST" class="inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-500 hover:text-red-700">🗃️ Archive</button>
+                                    </form>
+                                @endif
                             </div>
                         </td>
                     </tr>
