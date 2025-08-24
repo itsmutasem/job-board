@@ -12,9 +12,15 @@ class JobCategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        // Active
         $query = JobCategory::latest();
+
+        // Archive
+        if ($request->input('archived') == 'true') {
+            $query->onlyTrashed();
+        }
         $categories = $query->paginate(10)->onEachSide(1);
         return view('job-category.index', compact('categories'));
     }
