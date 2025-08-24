@@ -8,7 +8,14 @@
     <div class="overflow-x-auto p-6">
         <x-toast-notification />
 
-{{--        Job Category Button --}}
+        {{--        Archived Job Category Button --}}
+        <div class="flex justify-end items-center">
+            <a href="{{ route('job-categories.index', ['archived' => 'true']) }}" class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
+                Archived
+            </a>
+        </div>
+
+        {{--        Add Job Category Button --}}
         <div class="flex justify-end items-center">
             <a href="{{ route('job-categories.create') }}" class="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
                 Add Job Category
@@ -24,7 +31,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($categories as $category)
+                @forelse($categories as $category)
                     <tr class="border-b">
                         <td class="px-6 py-4 text-gray-800">{{ $category->name }}</td>
                         <td>
@@ -40,7 +47,11 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="2">No Categories found</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
 
