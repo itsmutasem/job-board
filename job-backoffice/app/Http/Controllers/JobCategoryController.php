@@ -78,6 +78,6 @@ class JobCategoryController extends Controller
     {
         $category = JobCategory::findOrFail($id);
         $category->delete();
-        return redirect()->route('job-category.index')->with('delete', 'Job category archived successfully!');
+        return redirect()->route('job-categories.index')->with('delete', 'Job category archived successfully!');
     }
 }
