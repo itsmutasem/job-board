@@ -23,7 +23,7 @@ class JobCategoryUpdateRequset extends FormRequest
     public function rules(): array
     {
         return [
-        'name' => 'required|string|max:255|unique:job_categories,name,' . $this->route('job-categories'),
+        'name' => 'bail|required|string|max:255|unique:job_categories,name,' . $this->route('job_category'),
 //            'name' => ['required', 'string', 'max:255', Rule::unique('job_categories', 'name')->ignore($this->$category->id)],
         ];
     }
