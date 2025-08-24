@@ -8,18 +8,23 @@
     <div class="overflow-x-auto p-6">
         <x-toast-notification />
 
-        {{--        Archived Job Category Button --}}
         <div class="flex justify-end items-center">
-            <a href="{{ route('job-categories.index', ['archived' => 'true']) }}" class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
-                Archived
-            </a>
-        </div>
+            @if(request()->input('archived') == 'true')
+                {{-- Active --}}
+                <a href="{{ route('job-categories.index') }}" class="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
+                    Active Categories
+                </a>
 
-        {{--        Add Job Category Button --}}
-        <div class="flex justify-end items-center">
-            <a href="{{ route('job-categories.create') }}" class="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
-                Add Job Category
-            </a>
+            @else
+            {{-- Archived --}}
+                <a href="{{ route('job-categories.index', ['archived' => 'true']) }}" class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
+                    Archived Categories
+                </a>
+            @endif
+            {{-- Add Job Category Button --}}
+                <a href="{{ route('job-categories.create') }}" class="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
+                    Add Job Category
+                </a>
         </div>
 
 {{--        Job Category Table --}}
@@ -49,7 +54,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="2">No Categories found</td>
+                        <td colspan="2" class="px-6 py-4 text-gray-800">No Categories found</td>
                     </tr>
                 @endforelse
             </tbody>
