@@ -13,6 +13,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('companies', CompanyController::class);
+    Route::put('companies/{id}/restore', [CompanyController::class, 'restore'])->name('companies.restore');
 
     Route::resource('job-applications', JobApplicationController::class);
 
