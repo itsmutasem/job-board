@@ -31,7 +31,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('companies.create');
+        return view('company.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class CompanyController extends Controller
     public function edit(string $id)
     {
         $company = Company::findOrFail($id);
-        return view('companies.edit', compact('company'));
+        return view('company.edit', compact('company'));
     }
 
     /**
