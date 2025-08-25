@@ -19,7 +19,7 @@ class CompanyController extends Controller
 
         // Archived
         if ($request->input('archived') == 'true') {
-            $query->onlyTrached();
+            $query->onlyTrashed();
         }
 
         $companies = $query->paginate(10)->onEachSide(1);
