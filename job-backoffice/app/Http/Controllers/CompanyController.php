@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyCreateRequest;
+use App\Http\Requests\CompanyUpdateRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
@@ -63,9 +64,12 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CompanyUpdateRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+        $company = Company::findOrFail($id);
+        $company->update($validated);
+        return redirect()->route('companies.index')->with('update', 'Company updated successfully!');
     }
 
     /**
