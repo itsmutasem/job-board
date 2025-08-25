@@ -22,8 +22,8 @@ class CompanyController extends Controller
             $query->onlyTrached();
         }
 
-        $company = $query->paginate(10)->onEachSide(1);
-        return view('company.index', compact('company'));
+        $companies = $query->paginate(10)->onEachSide(1);
+        return view('company.index', compact('companies'));
     }
 
     /**
