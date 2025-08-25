@@ -77,6 +77,8 @@ class CompanyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+        $company->delete();
+        return redirect()->route('companies.index')->with('delete', 'Company deleted successfully!');
     }
 }
