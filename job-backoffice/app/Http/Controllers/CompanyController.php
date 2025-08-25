@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyCreateRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
@@ -35,9 +36,11 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CompanyCreateRequest $request)
     {
-        //
+        $validated = $request->validated();
+        Company::create($validated);
+        return redirect()->route('companies.index')->with('success', 'Company created successfully!');
     }
 
     /**
