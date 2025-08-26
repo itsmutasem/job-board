@@ -52,7 +52,28 @@
             <div>
 {{--                Jobs Tab --}}
                 <div id="jobs" class="{{ request('tab') == 'jobs' || request('tab') == '' ? 'block' : 'hidden' }}">
-                    <h3 class="text-lg font-bold">Jobs Content</h3>
+                    <table class="min-w-full bg-gray-50 rounded-lg shadow">
+                        <thead>
+                            <tr>
+                                <th class="py-2 px-4 text-left bg-gray-100 rounded-tl-lg">Title</th>
+                                <th class="py-2 px-4 text-left bg-gray-100">Type</th>
+                                <th class="py-2 px-4 text-left bg-gray-100">Location</th>
+                                <th class="py-2 px-4 text-left bg-gray-100 rounded-tl-lg">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($company->jobVacancies as $job)
+                                <tr>
+                                    <td class="py-2 px-4">{{ $job->title }}</td>
+                                    <td class="py-2 px-4">{{ $job->type }}</td>
+                                    <td class="py-2 px-4">{{ $job->location }}</td>
+                                    <td class="py-2 px-4">
+                                        <a href="{{ route('job-vacancies.show', $job->id) }}" class="text-blue-500 hover:text-blue-700 underline">View</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
 
 {{--                Applicaitons Tab --}}
