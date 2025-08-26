@@ -8,6 +8,11 @@
     <div class="overflow-x-auto p-6">
         <x-toast-notification />
 
+{{--        Back Button --}}
+        <div class="mb-6">
+            <a href="{{ route('companies.index') }}" class="bg-gray-200 text-gray-800 hover:bg-gray-300 px-4 py-2 rounded-md shadow">← Back</a>
+        </div>
+
         <div class="w-full mx-auto p-6 bg-white rounded-lg shadow">
             {{-- Company Details --}}
             <div>
