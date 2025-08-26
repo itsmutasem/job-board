@@ -29,6 +29,37 @@
                     <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">Archive</button>
                 </form>
             </div>
+
+{{--            Tabs Navigation --}}
+            <div class="mb-6">
+                <ul class="flex space-x-4">
+                    <li>
+                        <a href="{{ route('companies.show', ['company' => $company->id ,'tab' => 'jobs']) }}"
+                           class="px-4 py-2 text-gray-800 font-semibold {{ request('tab') == 'jobs' ? 'border-b-2 border-blue-500' : '' }}">
+                            Jobs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('companies.show', ['company' => $company->id ,'tab' => 'applications']) }}"
+                           class="px-4 py-2 text-gray-800 font-semibold {{ request('tab') == 'applications' ? 'border-b-2 border-blue-500' : '' }}">
+                            Applications
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+{{--            Tap Content --}}
+            <div>
+{{--                Jobs Tab --}}
+                <div id="jobs" class="{{ request('tab') == 'jobs' || request('tab') == '' ? 'block' : 'hidden' }}">
+                    <h3 class="text-lg font-bold">Jobs Content</h3>
+                </div>
+
+{{--                Applicaitons Tab --}}
+                <div id="applications" class="{{ request('tab') == 'applications' ? 'block' : 'hidden' }}">
+                    <h3 class="text-lg font-bold">Applications Content</h3>
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>
