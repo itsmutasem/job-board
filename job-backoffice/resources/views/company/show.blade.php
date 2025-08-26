@@ -78,7 +78,28 @@
 
 {{--                Applicaitons Tab --}}
                 <div id="applications" class="{{ request('tab') == 'applications' ? 'block' : 'hidden' }}">
-                    <h3 class="text-lg font-bold">Applications Content</h3>
+                    <table class="min-w-full bg-gray-50 rounded-lg shadow">
+                        <thead>
+                        <tr>
+                            <th class="py-2 px-4 text-left bg-gray-100 rounded-tl-lg">Applicant Name</th>
+                            <th class="py-2 px-4 text-left bg-gray-100">Job Title</th>
+                            <th class="py-2 px-4 text-left bg-gray-100">Status</th>
+                            <th class="py-2 px-4 text-left bg-gray-100 rounded-tl-lg">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($company->jobApplications as $application)
+                            <tr>
+                                <td class="py-2 px-4">{{ $application->user->name }}</td>
+                                <td class="py-2 px-4">{{ $application->jobVacancy->title }}</td>
+                                <td class="py-2 px-4">{{ $application->status }}</td>
+                                <td class="py-2 px-4">
+                                    <a href="{{ route('job-applications.show', $application->id) }}" class="text-blue-500 hover:text-blue-700 underline">View</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
