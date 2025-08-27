@@ -62,7 +62,7 @@
 
 {{--                Owner Details --}}
                 <div class="mb-4 p-6 bg-gray-50 border-gray-100 rounded-lg shadow-sm">
-                    <h3 class="text-lg font-bold">Owner Details</h3>
+                    <h3 class="text-lg font-bold">Company Owner</h3>
                     <p class="text-sm mb-2">Enter the owner details</p>
                     <div class="mb-4">
                         <label for="owner_name" class="block text-sm font-medium text-gray-700">
