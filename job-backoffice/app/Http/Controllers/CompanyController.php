@@ -57,7 +57,7 @@ class CompanyController extends Controller
         }
 
         // Create company
-        $company = Company::create([
+        Company::create([
             'name' => $validated['name'],
             'address' => $validated['address'],
             'industry' => $validated['industry'],
