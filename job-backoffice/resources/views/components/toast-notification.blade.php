@@ -74,5 +74,26 @@
                 </svg>
             </button>
         </div>
+
+        @elseif(session('error'))
+        <div
+            x-data="{ show: true }"
+            x-show="show"
+            x-transition.duration.500ms
+            x-init="setTimeout(() => show = false, 4000)"
+            class="max-w-lg w-full bg-red-800 border-l-4 border-red-800 text-white px-6 py-4 rounded-lg shadow-lg flex items-center justify-between"
+            role="alert"
+        >
+            <div class="flex items-center space-x-2">
+                <span>Error: {{ session('error') }}</span>
+            </div>
+
+            <!-- Close (X) Button -->
+            <button @click="show = false" class="ml-4 text-white hover:text-gray-200 focus:outline-none">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
     @endif
 </div>
