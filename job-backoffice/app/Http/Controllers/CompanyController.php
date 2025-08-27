@@ -51,6 +51,11 @@ class CompanyController extends Controller
             'role' => 'company-owner'
         ]);
 
+        // Return error if owner creation fails
+        if (!$owner) {
+            return redirect()->route('company.create')->with('error', 'Failed to create owner!');
+        }
+
         // Create company
         $company = Company::create([
             'name' => $validated['name'],
