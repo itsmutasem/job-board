@@ -41,7 +41,7 @@
                 <ul class="flex space-x-4">
                     <li>
                         <a href="{{ route('companies.show', ['company' => $company->id ,'tab' => 'jobs']) }}"
-                           class="px-4 py-2 text-gray-800 font-semibold {{ request('tab') == 'jobs' ? 'border-b-2 border-blue-500' : '' }}">
+                           class="px-4 py-2 text-gray-800 font-semibold {{ request('tab') == 'jobs' || request('tab') == '' ? 'border-b-2 border-blue-500' : '' }}">
                             Jobs
                         </a>
                     </li>
