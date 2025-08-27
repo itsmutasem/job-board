@@ -26,6 +26,11 @@ class CompanyCreateRequest extends FormRequest
             'address' => 'bail|required|string|max:255',
             'industry' => 'bail|required|string|max:255',
             'website' => 'bail|nullable|string|url|max:255',
+
+            // Owner Details
+            'owner_name' => 'bail|required|string|max:255',
+            'owner_email' => 'bail|required|email|unique:users,email',
+            'owner_password' => 'bail|required|string|min:8',
         ];
     }
 
@@ -46,6 +51,16 @@ class CompanyCreateRequest extends FormRequest
             'website.max' => 'The company website must be less then 255 characters.',
             'website.string' => 'The company website must be a string.',
 
+            // Owner Details
+            'owner_name.required' => 'The owner name is required.',
+            'owner_name.max' => 'The owner name must be less then 255 characters.',
+            'owner_name.string' => 'The owner name must be a string.',
+            'owner_email.required' => 'The owner email is required.',
+            'owner_email.email' => 'The owner email must be a valid email address.',
+            'owner_email.unique' => 'The owner email must be a valid email address.',
+            'owner_password.required' => 'The owner password is required.',
+            'owner_password.min' => 'The owner password must be at least 8 characters long.',
+            'owner_password.string' => 'The owner password must be a string.',
         ];
     }
 }
