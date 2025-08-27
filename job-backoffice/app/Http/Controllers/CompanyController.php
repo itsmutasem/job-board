@@ -51,7 +51,14 @@ class CompanyController extends Controller
             'role' => 'company-owner'
         ]);
 
-        
+        // Create company
+        $company = Company::create([
+            'name' => $validated['name'],
+            'address' => $validated['address'],
+            'industry' => $validated['industry'],
+            'website' => $validated['website'],
+            'ownerId' => $owner->id,
+        ]);
         return redirect()->route('companies.index')->with('success', 'Company created successfully!');
     }
 
