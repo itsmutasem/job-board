@@ -91,8 +91,8 @@
                         <div class="relative" x-data="{ show: false }">
 
                             <div class="relative">
-                                <x-text-input id="owner_password" class="block mt-1 w-full pr-10" x-bind:type="show ? 'text' : 'password'"
-                                              name="owenr_password" autocomplete="current-password" />
+                                <x-text-input id="owner_password" class="{{ $errors->has('owner_password') ? 'outline-red-500 outline outline-1' : '' }} block mt-1 w-full pr-10" x-bind:type="show ? 'text' : 'password'"
+                                              name="owner_password" autocomplete="current-password" />
 
                                 <!-- Eye Icon for Show/Hide Password -->
                                 <button type="button" class="absolute inset-y-0 right-2 flex items-center text-gray-500"
@@ -114,7 +114,7 @@
                                 </button>
                             </div>
 
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                            <x-input-error :messages="$errors->get('owner_password')" class="mt-2" />
                         </div>
                     </div>
                 </div>
