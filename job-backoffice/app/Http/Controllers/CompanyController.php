@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CompanyCreateRequest;
 use App\Http\Requests\CompanyUpdateRequest;
 use App\Models\Company;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class CompanyController extends Controller
 {
@@ -41,7 +43,15 @@ class CompanyController extends Controller
     public function store(CompanyCreateRequest $request)
     {
         $validated = $request->validated();
-        Company::create($validated);
+        // Create owner
+        $owner = User::create([
+            'name' => $validated['owner_name'],
+            'email' => $validated['owner_email'],
+            'password' => Hash::make($validated['owner_name']),
+            'role' => 'company-owner'
+        ]);
+
+        
         return redirect()->route('companies.index')->with('success', 'Company created successfully!');
     }
 
