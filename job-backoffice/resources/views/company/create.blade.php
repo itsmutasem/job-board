@@ -64,8 +64,62 @@
                 <div class="mb-4 p-6 bg-gray-50 border-gray-100 rounded-lg shadow-sm">
                     <h3 class="text-lg font-bold">Company Details</h3>
                     <p class="text-sm mb-2">Enter the owner details</p>
+                    <div class="mb-4">
+                        <label for="owner_name" class="block text-sm font-medium text-gray-700">
+                            Owner Name
+                        </label>
+                        <input type="text" name="owner_name" id="owner_name" value="{{ old('owner_name') }}" class="{{ $errors->has('owner_name') ? 'outline-red-500 outline outline-1' : '' }} mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        @error('owner_name')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="owner_email" class="block text-sm font-medium text-gray-700">
+                            Owner Email
+                        </label>
+                        <input type="email" name="owner_email" id="owner_email" value="{{ old('owner_email') }}" class="{{ $errors->has('owner_email') ? 'outline-red-500 outline outline-1' : '' }} mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        @error('owner_email')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="owner_password" class="block text-sm font-medium text-gray-700">
+                            Owner Password
+                        </label>
+                        <div class="relative" x-data="{ show: false }">
+
+                            <div class="relative">
+                                <x-text-input id="owner_password" class="block mt-1 w-full pr-10" x-bind:type="show ? 'text' : 'password'"
+                                              name="owenr_password" autocomplete="current-password" />
+
+                                <!-- Eye Icon for Show/Hide Password -->
+                                <button type="button" class="absolute inset-y-0 right-2 flex items-center text-gray-500"
+                                        @click="show = !show">
+                                    <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+
+                                    <svg x-show="show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M13.875 18.825a9.56 9.56 0 01-1.875.175c-4.478 0-8.268-2.943-9.542-7 1.002-3.364 3.843-6 7.542-7.575M15 12a3 3 0 00-6 0 3 3 0 006 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        </div>
+                    </div>
                 </div>
 
+{{--                Action Buttons --}}
                 <div class="flex justify-end space-x-4">
                     <a href="{{ route('companies.index') }}" class="inline-flex items-center py-2 bg-white text-gray-500 rounded-md hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
                         Cancel
