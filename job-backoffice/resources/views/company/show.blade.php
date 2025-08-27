@@ -17,6 +17,7 @@
             {{-- Company Details --}}
             <div>
                 <h3 class="text-lg font-bold">Company Information</h3>
+                <p><strong>Owner:</strong> {{ $company->owner->name }}</p>
                 <p><strong>Address:</strong> {{ $company->address }}</p>
                 <p><strong>Industry:</strong> {{ $company->industry }}</p>
                 <p><strong>Website:</strong> <a class="text-blue-500 hover:text-blue-700 underline" href="{{ $company->webiste }}" target="_blank">{{ $company->website }}</a></p>
@@ -40,7 +41,7 @@
                 <ul class="flex space-x-4">
                     <li>
                         <a href="{{ route('companies.show', ['company' => $company->id ,'tab' => 'jobs']) }}"
-                           class="px-4 py-2 text-gray-800 font-semibold {{ request('tab') == 'jobs' ? 'border-b-2 border-blue-500' : '' }}">
+                           class="px-4 py-2 text-gray-800 font-semibold {{ request('tab') == 'jobs' || request('tab') == '' ? 'border-b-2 border-blue-500' : '' }}">
                             Jobs
                         </a>
                     </li>
