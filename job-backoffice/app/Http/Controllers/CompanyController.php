@@ -95,7 +95,12 @@ class CompanyController extends Controller
     {
         $validated = $request->validated();
         $company = Company::findOrFail($id);
-        $company->update($validated);
+        $company->update([
+            'name' => $validated['name'],
+            'address' => $validated['address'],
+            'industry' => $validated['industry'],
+            'website' => $validated['website'],
+        ]);
         return redirect()->route('companies.index')->with('update', 'Company updated successfully!');
     }
 
