@@ -7,7 +7,7 @@
 
     <div class="overflow-x-auto p-6">
         <div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-            <form action="{{ route('companies.update', $company->id) }}" method="POST">
+            <form action="{{ route('companies.update', ['company' => $company->id, 'redirectToList' => request('redirectToList')]) }}" method="POST">
                 @csrf
                 @method('PUT')
 
