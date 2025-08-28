@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 
 class CompanyController extends Controller
 {
+    public $industries = ['Technology', 'Finance', 'Healthcare', 'Education', 'Manufacturing', 'Retail', 'Other'];
+
     /**
      * Display a listing of the resource.
      */
@@ -33,7 +35,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        $industries = ['Technology', 'Finance', 'Healthcare', 'Education', 'Manufacturing', 'Retail', 'Other'];
+        $industries = $this->industries;
         return view('company.create', compact('industries'));
     }
 
@@ -82,7 +84,8 @@ class CompanyController extends Controller
     public function edit(string $id)
     {
         $company = Company::findOrFail($id);
-        return view('company.edit', compact('company'));
+        $industries = $this->industries;
+        return view('company.edit', compact('company', 'industries'));
     }
 
     /**
@@ -92,7 +95,25 @@ class CompanyController extends Controller
     {
         $validated = $request->validated();
         $company = Company::findOrFail($id);
-        $company->update($validated);
+        $company->update([
+            'name' => $validated['name'],
+            'address' => $validated['address'],
+            'industry' => $validated['industry'],
+            'website' => $validated['website'],
+        ]);
+
+        // Update owner
+        $ownerData = [];
+        $ownerData['name'] =$validated['owner_name'];
+        if ($validated['owner_password']) {
+            $ownerData['owner_password'] = $validated['owner_password'];
+        }
+        $company->owner->update($ownerData);
+
+        if ($request->query('redirectToList') == 'false') {
+            return redirect()->route('companies.show', $company->id)->with('update', 'Company updated successfully!');
+        }
+
         return redirect()->route('companies.index')->with('update', 'Company updated successfully!');
     }
 
