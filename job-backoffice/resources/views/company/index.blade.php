@@ -60,7 +60,7 @@
                                 </form>
                             @else
                                 {{-- Edit Button --}}
-                                <a href="{{ route('companies.edit', $company->id) }}"
+                                <a href="{{ route('companies.edit', ['company' => $company->id, 'redirectToList' => 'true']) }}"
                                    class="text-blue-500 hover:text-blue-700">🖋️ Edit</a>
                                 {{-- Archive Button --}}
                                 <form action="{{ route('companies.destroy', $company->id) }}" method="POST"
