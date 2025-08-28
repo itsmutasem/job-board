@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+$industries = ['Technology', 'Finance', 'Healthcare', 'Education', 'Manufacturing', 'Retail', 'Other'];
 class CompanyController extends Controller
 {
     /**
@@ -33,7 +34,6 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        $industries = ['Technology', 'Finance', 'Healthcare', 'Education', 'Manufacturing', 'Retail', 'Other'];
         return view('company.create', compact('industries'));
     }
 
