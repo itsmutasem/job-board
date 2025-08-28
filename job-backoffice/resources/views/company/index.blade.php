@@ -44,7 +44,16 @@
             <tbody>
             @forelse($companies as $company)
                 <tr class="border-b">
-                    <td class="px-6 py-4 text-gray-800"><a class="text-blue-500 hover:text-gray-700 underline" href="{{ route('companies.show', $company->id) }}">{{ $company->name }}</a></td>
+                    <td class="px-6 py-4 text-gray-800">
+                        @if(request()->input('archived') == 'true')
+                            <span class="text-gray-500">{{ $company->name }}</span>
+                        @else
+                            <a class="text-blue-500 hover:text-gray-700 underline"
+                               href="{{ route('companies.show', $company->id) }}">
+                                {{ $company->name }}
+                            </a>
+                        @endif
+                    </td>
                     <td class="px-6 py-4 text-gray-800">{{ $company->address }}</td>
                     <td class="px-6 py-4 text-gray-800">{{ $company->industry }}</td>
                     <td class="px-6 py-4 text-gray-800">{{ $company->website }}</td>
