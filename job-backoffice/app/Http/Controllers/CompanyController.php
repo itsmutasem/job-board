@@ -110,7 +110,11 @@ class CompanyController extends Controller
         }
         $company->owner->update($ownerData);
 
-        return redirect()->route('companies.index')->with('update', 'Company updated successfully!');
+        if ($request->query('redirectToList') == 'true') {
+            return redirect()->route('companies.index')->with('update', 'Company updated successfully!');
+        }
+
+        return redirect()->route('companies.show', $company->id)->with('update', 'Company updated successfully!');
     }
 
     /**
