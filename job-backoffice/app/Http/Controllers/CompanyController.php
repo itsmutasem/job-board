@@ -9,9 +9,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-$industries = ['Technology', 'Finance', 'Healthcare', 'Education', 'Manufacturing', 'Retail', 'Other'];
 class CompanyController extends Controller
 {
+    public $industries = ['Technology', 'Finance', 'Healthcare', 'Education', 'Manufacturing', 'Retail', 'Other'];
+
     /**
      * Display a listing of the resource.
      */
@@ -34,6 +35,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
+        $industries = $this->industries;
         return view('company.create', compact('industries'));
     }
 
@@ -82,7 +84,8 @@ class CompanyController extends Controller
     public function edit(string $id)
     {
         $company = Company::findOrFail($id);
-        return view('company.edit', compact('company'));
+        $industries = $this->industries;
+        return view('company.edit', compact('company', 'industries'));
     }
 
     /**
