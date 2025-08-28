@@ -22,7 +22,7 @@ class CompanyUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'bail|required|string|max:255|unique:companies,name' . $this->route('company'),
+            'name' => 'bail|required|string|max:255|unique:companies,name,' . $this->route('company'),
             'address' => 'bail|required|string|max:255',
             'industry' => 'bail|required|string|max:255',
             'website' => 'bail|nullable|string|url|max:255',
