@@ -101,6 +101,15 @@ class CompanyController extends Controller
             'industry' => $validated['industry'],
             'website' => $validated['website'],
         ]);
+
+        // Update owner
+        $ownerData = [];
+        $ownerData['name'] =$validated['owner_name'];
+        if ($validated['owner_password']) {
+            $ownerData['owner_password'] = $validated['owner_password'];
+        }
+        $company->owner->update($ownerData);
+
         return redirect()->route('companies.index')->with('update', 'Company updated successfully!');
     }
 
