@@ -62,26 +62,26 @@
 
                     {{--                Company Select Dropdown --}}
                     <div class="mb-4">
-                        <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
-                        <select name="company" id="company" class="{{ $errors->has('company') ? 'outline-red-500 outline outline-1' : '' }} mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        <label for="companyId" class="block text-sm font-medium text-gray-700">Company</label>
+                        <select name="companyId" id="companyId" class="{{ $errors->has('companyId') ? 'outline-red-500 outline outline-1' : '' }} mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                             @foreach($companies as $company)
-                                <option value="{{ $company->id }}" {{ old('company') == $company ? 'selected' : '' }}>{{ $company->name }}</option>
+                                <option value="{{ $company->id }}" {{ old('companyId') == $company ? 'selected' : '' }}>{{ $company->name }}</option>
                             @endforeach
                         </select>
-                        @error('company')
+                        @error('companyId')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
 
                     {{--                Job Category Select Dropdown --}}
                     <div class="mb-4">
-                        <label for="jobCategory" class="block text-sm font-medium text-gray-700">Job Category</label>
-                        <select name="jobCategory" id="JobCategory" class="{{ $errors->has('jobCategory') ? 'outline-red-500 outline outline-1' : '' }} mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        <label for="jobCategoryId" class="block text-sm font-medium text-gray-700">Job Category</label>
+                        <select name="jobCategoryId" id="JobCategoryId" class="{{ $errors->has('jobCategoryId') ? 'outline-red-500 outline outline-1' : '' }} mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                             @foreach($jobCategories as $jobCategory)
-                                <option value="{{ $jobCategory->id }}" {{ old('jobCategory') == $jobCategory ? 'selected' : '' }}>{{ $jobCategory->name }}</option>
+                                <option value="{{ $jobCategory->id }}" {{ old('jobCategoryId') == $jobCategory ? 'selected' : '' }}>{{ $jobCategory->name }}</option>
                             @endforeach
                         </select>
-                        @error('jobCategory')
+                        @error('jobCategoryId')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>

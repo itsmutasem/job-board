@@ -27,8 +27,8 @@ class JobVacancyUpdateRequest extends FormRequest
             'salary' => 'bail|required|numeric|min:0',
             'type' => 'bail|required|string|max:255',
             'description' => 'bail|required|string|max:255',
-            'jobCategory' => 'bail|required|string|max:255',
-            'company' => 'bail|required|string|max:255',
+            'jobCategoryId' => 'bail|required|string|max:255',
+            'companyId' => 'bail|required|string|max:255',
         ];
     }
 
@@ -55,13 +55,13 @@ class JobVacancyUpdateRequest extends FormRequest
             'description.max' => 'The job description must be less than 255 characters.',
             'description.string' => 'The job description must be a string.',
 
-            'jobCategory.required' => 'The job category is required.',
-            'jobCategory.max' => 'The job category must be less than 255 characters.',
-            'jobCategory.string' => 'The job category must be a string.',
+            'jobCategoryId.required' => 'The job category is required.',
+            'jobCategoryId.max' => 'The job category must be less than 255 characters.',
+            'jobCategoryId.string' => 'The job category must be a string.',
 
-            'company.required' => 'The company is required.',
-            'company.max' => 'The company must be less than 255 characters.',
-            'company.string' => 'The company must be a string.',
+            'companyId.required' => 'The company is required.',
+            'companyId.max' => 'The company must be less than 255 characters.',
+            'companyId.string' => 'The company must be a string.',
         ];
     }
 }
