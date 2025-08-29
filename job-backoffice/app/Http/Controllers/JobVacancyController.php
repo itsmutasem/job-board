@@ -89,6 +89,15 @@ class JobVacancyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $jobVacancy = JobVacancy::findOrFail($id);
+        $jobVacancy->delete();
+        return redirect()->route('job-vacancies.index')->with('delete', 'Job vacancy deleted successfully!');
+    }
+
+    public function restore(string $id)
+    {
+        $jobVacancy = JobVacancy::withTrashed()->findOrFail($id);
+        $jobVacancy->restore();
+        return redirect()->route('job-vacancies.index', ['archived' => 'true'])->with('success', 'Job vacancy restored successfully!');
     }
 }
