@@ -18,7 +18,7 @@
             <div>
                 <h3 class="text-lg font-bold">job Vacancy Information</h3>
                 <p><strong>Company:</strong> {{ $jobVacancy->company->name }}</p>
-                <p><strong>Location:</strong> {{ $jobVacancy->locaiton }}</p>
+                <p><strong>Location:</strong> {{ $jobVacancy->location }}</p>
                 <p><strong>Type:</strong> {{ $jobVacancy->type }}</p>
                 <p><strong>Salary:</strong>$ {{ number_format($jobVacancy->salary, 2) }}</p>
                 <p><strong>Description:</strong> {{ $jobVacancy->description }}</p>
