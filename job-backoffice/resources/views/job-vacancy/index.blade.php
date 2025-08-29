@@ -58,7 +58,7 @@
                     <td class="px-6 py-4 text-gray-800">{{ $jobVacancy->company->name }}</td>
                     <td class="px-6 py-4 text-gray-800">{{ $jobVacancy->location }}</td>
                     <td class="px-6 py-4 text-gray-800">{{ $jobVacancy->type }}</td>
-                    <td class="px-6 py-4 text-gray-800">{{ $jobVacancy->salary }}</td>
+                    <td class="px-6 py-4 text-gray-800">$ {{ number_format($jobVacancy->salary, 2) }}</td>
                     <td>
                         <div class="flex space-x-4">
                             @if(request()->input('archived') == 'true')
