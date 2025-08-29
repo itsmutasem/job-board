@@ -50,7 +50,7 @@
                             <span class="text-gray-500">{{ $jobVacancy->title }}</span>
                         @else
                             <a class="text-blue-500 hover:text-gray-700 underline"
-                               href="{{ route('companies.show', $jobVacancy->id) }}">
+                               href="{{ route('job-vacancies.show', $jobVacancy->id) }}">
                                 {{ $jobVacancy->title }}
                             </a>
                         @endif
