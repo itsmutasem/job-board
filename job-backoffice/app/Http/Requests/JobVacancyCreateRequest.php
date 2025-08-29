@@ -11,7 +11,7 @@ class JobVacancyCreateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,46 @@ class JobVacancyCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'bail|required|string|max:255|',
+            'location' => 'bail|required|string|max:255',
+            'salary' => 'bail|required|numeric|min:0',
+            'type' => 'bail|required|string|max:255',
+            'description' => 'bail|required|string|max:255',
+            'jobCategory' => 'bail|required|string|max:255',
+            'company' => 'bail|required|string|max:255',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'The job title is required.',
+            'title.max' => 'The job title must be less than 255 characters.',
+            'title.string' => 'The job title must be a string.',
+
+            'location.required' => 'The job location is required.',
+            'location.max' => 'The job location must be less than 255 characters.',
+            'location.string' => 'The job location must be a string.',
+
+            'salary.required' => 'The job salary is required.',
+            'salary.min' => 'The job salary must be at least 0.',
+            'salary.numeric' => 'The job salary must be a number.',
+
+            'type.required' => 'The job type is required.',
+            'type.max' => 'The job type must be less than 255 characters.',
+            'type.string' => 'The job type must be a string.',
+
+            'description.required' => 'The job description is required.',
+            'description.max' => 'The job description must be less than 255 characters.',
+            'description.string' => 'The job description must be a string.',
+
+            'jobCategory.required' => 'The job category is required.',
+            'jobCategory.max' => 'The job category must be less than 255 characters.',
+            'jobCategory.string' => 'The job category must be a string.',
+
+            'company.required' => 'The company is required.',
+            'company.max' => 'The company must be less than 255 characters.',
+            'company.string' => 'The company must be a string.',
         ];
     }
 }
