@@ -30,7 +30,7 @@ class JobVacancyController extends Controller
      */
     public function create()
     {
-        //
+        return view('job-vacancy.create');
     }
 
     /**
