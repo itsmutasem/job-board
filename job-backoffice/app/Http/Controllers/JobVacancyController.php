@@ -16,7 +16,7 @@ class JobVacancyController extends Controller
         $query = JobVacancy::latest();
 
         // Archived
-        if ($request->input('archived') == 'ture') {
+        if ($request->input('archived') == 'true') {
             $query->onlyTrashed();
         }
 
