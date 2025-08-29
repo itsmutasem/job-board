@@ -68,7 +68,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($company->jobVacancies as $job)
+                            @forelse($company->jobVacancies as $job)
                                 <tr>
                                     <td class="py-2 px-4">{{ $job->title }}</td>
                                     <td class="py-2 px-4">{{ $job->type }}</td>
@@ -77,7 +77,11 @@
                                         <a href="{{ route('job-vacancies.show', $job->id) }}" class="text-blue-500 hover:text-blue-700 underline">View</a>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="py-2 px-4 text-center">No jobs yet.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -94,7 +98,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($company->jobApplications as $application)
+                        @forelse($company->jobApplications as $application)
                             <tr>
                                 <td class="py-2 px-4">{{ $application->user->name }}</td>
                                 <td class="py-2 px-4">{{ $application->jobVacancy->title }}</td>
@@ -110,7 +114,11 @@
                                     <a href="{{ route('job-applications.show', $application->id) }}" class="text-blue-500 hover:text-blue-700 underline">View</a>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="4" class="py-2 px-4 text-center">No applications yet.</td>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
                 </div>
