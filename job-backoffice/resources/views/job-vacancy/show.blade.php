@@ -20,7 +20,7 @@
                 <p><strong>Company:</strong> {{ $jobVacancy->company->name }}</p>
                 <p><strong>Location:</strong> {{ $jobVacancy->locaiton }}</p>
                 <p><strong>Type:</strong> {{ $jobVacancy->type }}</p>
-                <p><strong>Salary:</strong>$ {{ number_format($jobVacancy->type, 2) }}</p>
+                <p><strong>Salary:</strong>$ {{ number_format($jobVacancy->salary, 2) }}</p>
                 <p><strong>Description:</strong> {{ $jobVacancy->description }}</p>
 
                 <p><strong>Website:</strong> <a class="text-blue-500 hover:text-blue-700 underline" href="{{ $jobVacancy->webiste }}" target="_blank">{{ $jobVacancy->website }}</a></p>
