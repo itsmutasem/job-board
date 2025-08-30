@@ -11,7 +11,7 @@ class UserUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'password' => 'bail|required|string|min:8',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'password.required' => 'The password is required.',
+            'password.string' => 'The password must be a string.',
+            'password.min' => 'The password must be at least 8 characters.',
         ];
     }
 }
