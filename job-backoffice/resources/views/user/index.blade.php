@@ -51,7 +51,7 @@
                         <div class="flex space-x-4">
                             @if(request()->input('archived') == 'true')
                                 {{-- Restore Button --}}
-                                <form action="{{ route('users.restore', $users->id) }}" method="POST">
+                                <form action="{{ route('users.restore', $user->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <button type="submit" class="text-green-500 hover:text-green-700">🔄️ Restore

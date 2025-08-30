@@ -80,4 +80,11 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('users.index')->with('delete', 'User archived successfully!');
     }
+
+    public function restore(string $id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+        $user->restore();
+        return redirect()->route('users.index', ['archived' => 'true'])->with('success', 'User restored successfully!');
+    }
 }

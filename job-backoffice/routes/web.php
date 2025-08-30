@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::put('job-vacancies/{id}/restore', [JobVacancyController::class, 'restore'])->name('job-vacancies.restore');
 
     Route::resource('users', UserController::class);
+    Route::put('users/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
