@@ -36,7 +36,8 @@ class JobApplicationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $jobApplication = JobApplication::findOrFail($id);
+        return view('job-application.edit', compact('jobApplication'));
     }
 
     /**
