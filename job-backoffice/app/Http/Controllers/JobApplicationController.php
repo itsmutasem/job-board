@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JobApplicationUpdateRequest;
 use App\Models\JobApplication;
 use Illuminate\Http\Request;
 
@@ -43,9 +44,17 @@ class JobApplicationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(JobApplicationUpdateRequest $request, string $id)
     {
-        //
+        $jobApplication = JobApplication::findOrFail($id);
+        $jobApplication->update([
+            'status' => $request->input('status'),
+        ]);
+
+        if ($request->query('redirectToList') == 'false'){
+            return redirect()->route('job-applications.show', $jobApplication->id)->with('update', 'Applicant status updated successfully!');
+        }
+        return redirect()->route('job-applications.index')->with('update', 'Applicant status updated successfully!');
     }
 
     /**
