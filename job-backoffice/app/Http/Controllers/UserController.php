@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -9,9 +10,18 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('user.index');
+        // Active
+        $query = User::latest();
+
+        // Archived
+        if ($request->input('archived') == 'true') {
+            $query->onlyTrashed();
+        }
+        
+        $users = $query->paginate(10)->onEachSide(1);
+        return view('user.index', compact('users'));
     }
 
     /**
