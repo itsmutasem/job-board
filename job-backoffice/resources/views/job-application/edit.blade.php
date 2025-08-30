@@ -14,7 +14,7 @@
                 {{--                Job Applicatino Details --}}
                 <div class="mb-4 p-6 bg-gray-50 border-gray-100 rounded-lg shadow-sm">
                     <h3 class="text-lg font-bold">Job Application Details</h3>
-                    <p class="text-sm mb-2">Enter the job vacancies details</p>
+                    <p class="text-sm mb-2">Change the status of this application</p>
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-700">
                             Applicant Name
