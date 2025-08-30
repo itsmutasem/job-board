@@ -11,7 +11,7 @@ class JobApplicationUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class JobApplicationUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'status' => 'bail|required|string|in:pending,accepted,rejected',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'status.required' => 'The applicant status is required.',
+            'status.in' => 'The applicant status must be either pending, accepted, rejected.',
         ];
     }
 }
