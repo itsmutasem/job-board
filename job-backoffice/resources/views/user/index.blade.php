@@ -61,7 +61,7 @@
 {{--                                If Admin, don't allow edit or delete --}}
                             @if($user->role != 'admin')
                                     {{-- Edit Button --}}
-                                    <a href="{{ route('users.edit', ['user' => $user->id, 'redirectToList' => 'true']) }}"
+                                    <a href="{{ route('users.edit', $user->id) }}"
                                        class="text-blue-500 hover:text-blue-700">🖋️ Edit</a>
                                     {{-- Archive Button --}}
                                     <form action="{{ route('users.destroy', $user->id) }}" method="POST"
