@@ -19,7 +19,7 @@ class UserController extends Controller
         if ($request->input('archived') == 'true') {
             $query->onlyTrashed();
         }
-        
+
         $users = $query->paginate(10)->onEachSide(1);
         return view('user.index', compact('users'));
     }
