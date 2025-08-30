@@ -66,4 +66,11 @@ class JobApplicationController extends Controller
         $jobApplication->delete();
         return redirect()->route('job-applications.index')->with('delete', 'Applicant archived successfully!');
     }
+
+    public function restore(string $id)
+    {
+        $jobApplication = JobApplication::withTrashed()->findOrFail($id);
+        $jobApplication->restore();
+        return redirect()->route('job-applications.index', ['archived' => 'true'])->with('success', 'Applicant restored successfully!');
+    }
 }
