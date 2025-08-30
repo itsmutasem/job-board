@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobApplication;
 use Illuminate\Http\Request;
 
 class JobApplicationController extends Controller
@@ -9,9 +10,16 @@ class JobApplicationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('job-application.index');
+        $query = JobApplication::latest();
+
+        if ($request->input('archived') == 'true') {
+            $query->onlyTrashed();
+        }
+
+        $jobApplications = $query->paginate(10)->onEachSide(1);
+        return view('job-application.index', compact('jobApplications'));
     }
 
     /**
