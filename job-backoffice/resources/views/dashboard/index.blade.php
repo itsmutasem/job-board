@@ -50,9 +50,6 @@
                     @endforeach
                     </tbody>
                 </table>
-                <div class="mt-4">
-                    {{ $mostAppliedJobs->links() }}
-                </div>
             </div>
         </div>
 
@@ -70,24 +67,14 @@
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                    <tr>
-                        <td class="py-4">Senior Frontend Developer</td>
-                        <td class="py-4">100</td>
-                        <td class="py-4">80</td>
-                        <td class="py-4">80%</td>
-                    </tr>
-                    <tr>
-                        <td class="py-4">Senior Machine Learning</td>
-                        <td class="py-4">100</td>
-                        <td class="py-4">76</td>
-                        <td class="py-4">76%</td>
-                    </tr>
-                    <tr>
-                        <td class="py-4">AI Lecturer</td>
-                        <td class="py-4">100</td>
-                        <td class="py-4">9</td>
-                        <td class="py-4">0.9%</td>
-                    </tr>
+                    @foreach($conversionRates as $conversionRate)
+                        <tr>
+                            <td class="py-4">{{ $conversionRate->title }}</td>
+                            <td class="py-4">{{ $conversionRate->viewCount }}</td>
+                            <td class="py-4">{{ $conversionRate->totalCount }}</td>
+                            <td class="py-4">{{ $conversionRate->conversionRate }} %</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
