@@ -5,9 +5,9 @@
         </h2>
     </x-slot>
 
-    <div class="py-12 px-6">
+    <div class="py-12 px-6 flex flex-col gap-4">
 {{--        Overview Cards --}}
-        <div class="grid grid-cols-3 gap-6">
+        <div class="grid grid-cols-3 gap-4">
 
             <div class="p-6 bg-white overflow-hidden shadow-sm rounded-lg">
                 <h3 class="text-lg font-medium text-gray-900">Active Users</h3>
@@ -28,6 +28,37 @@
             </div>
         </div>
 {{--        Most Applied Jobs --}}
+        <div class="p-6 bg-white overflow-hidden shadow-sm rounded-lg">
+            <h3 class="text-lg font-medium text-gray-900">Most Applied Jobs</h3>
+            <div>
+                <table class="w-full divide-y divide-gray-200">
+                    <thead>
+                    <tr class="text-left">
+                        <th class="py-2 uppercase text-gray-500">Job Title</th>
+                        <th class="py-2 uppercase text-gray-500">Company</th>
+                        <th class="py-2 uppercase text-gray-500">Total Applications</th>
+                    </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="py-4">Senior Frontend Developer</td>
+                        <td class="py-4">Muta</td>
+                        <td class="py-4">3672</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4">Senior Machine Learning</td>
+                        <td class="py-4">Muta</td>
+                        <td class="py-4">126</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4">AI Lecturer</td>
+                        <td class="py-4">KIT</td>
+                        <td class="py-4">9</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
 {{--        Conversion Rate --}}
     </div>
