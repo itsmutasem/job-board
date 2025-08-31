@@ -27,6 +27,9 @@ class DashboardController extends Controller
             'totalApplications' => $totalApplications
         ];
 
-        return view('dashboard.index', compact('analytics'));
+        // Most applied jobs
+        $mostAppliedJobs = JobVacancy::withCount('jobApplication as Totalcount');
+
+        return view('dashboard.index', compact(['analytics', 'mostAppliedJobs']));
     }
 }
