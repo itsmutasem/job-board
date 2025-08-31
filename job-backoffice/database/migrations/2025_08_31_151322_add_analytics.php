@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->timestamps('last_login_at')->nullable();
         });
+
+        Schema::table('job_vacancies', function (Blueprint $table) {
+            $table->integer('viewCount')->default(0);
+        });
+
     }
 
     /**
