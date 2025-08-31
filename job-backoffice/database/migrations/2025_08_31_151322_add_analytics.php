@@ -26,6 +26,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('last_login_at');
+        });
+
+        Schema::table('job_vacancies', function (Blueprint $table) {
+            $table->dropColumn('viewCount');
+        });
     }
 };
