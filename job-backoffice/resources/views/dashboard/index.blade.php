@@ -41,21 +41,13 @@
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                    <tr>
-                        <td class="py-4">Senior Frontend Developer</td>
-                        <td class="py-4">Muta</td>
-                        <td class="py-4">3672</td>
-                    </tr>
-                    <tr>
-                        <td class="py-4">Senior Machine Learning</td>
-                        <td class="py-4">Muta</td>
-                        <td class="py-4">126</td>
-                    </tr>
-                    <tr>
-                        <td class="py-4">AI Lecturer</td>
-                        <td class="py-4">KIT</td>
-                        <td class="py-4">9</td>
-                    </tr>
+                    @foreach($mostAppliedJobs as $job)
+                        <tr>
+                            <td class="py-4">{{ $job->title }}</td>
+                            <td class="py-4">{{ $job->company->name }}</td>
+                            <td class="py-4">{{ $job->totalCount }}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
