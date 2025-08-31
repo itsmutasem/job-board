@@ -27,6 +27,7 @@
                 <p class="text-sm text-gray-500">All time</p>
             </div>
         </div>
+
 {{--        Most Applied Jobs --}}
         <div class="p-6 bg-white overflow-hidden shadow-sm rounded-lg">
             <h3 class="text-lg font-medium text-gray-900">Most Applied Jobs</h3>
@@ -61,5 +62,40 @@
         </div>
 
 {{--        Conversion Rate --}}
+        <div class="p-6 bg-white overflow-hidden shadow-sm rounded-lg">
+            <h3 class="text-lg font-medium text-gray-900">Conversion Rates</h3>
+            <div>
+                <table class="w-full divide-y divide-gray-200">
+                    <thead>
+                    <tr class="text-left">
+                        <th class="py-2 uppercase text-gray-500">Job Title</th>
+                        <th class="py-2 uppercase text-gray-500">Views</th>
+                        <th class="py-2 uppercase text-gray-500">Applications</th>
+                        <th class="py-2 uppercase text-gray-500">Conversion Rate</th>
+                    </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="py-4">Senior Frontend Developer</td>
+                        <td class="py-4">100</td>
+                        <td class="py-4">80</td>
+                        <td class="py-4">80%</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4">Senior Machine Learning</td>
+                        <td class="py-4">100</td>
+                        <td class="py-4">76</td>
+                        <td class="py-4">76%</td>
+                    </tr>
+                    <tr>
+                        <td class="py-4">AI Lecturer</td>
+                        <td class="py-4">100</td>
+                        <td class="py-4">9</td>
+                        <td class="py-4">0.9%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </x-app-layout>
