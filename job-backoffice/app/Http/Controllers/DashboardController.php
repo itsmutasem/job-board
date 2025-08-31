@@ -28,7 +28,9 @@ class DashboardController extends Controller
         ];
 
         // Most applied jobs
-        $mostAppliedJobs = JobVacancy::withCount('jobApplications as totalCount')->orderByDesc('totalCount')->get();
+        $mostAppliedJobs = JobVacancy::withCount('jobApplications as totalCount')
+            ->orderByDesc('totalCount')
+            ->paginate(5);
 
         return view('dashboard.index', compact(['analytics', 'mostAppliedJobs']));
     }
