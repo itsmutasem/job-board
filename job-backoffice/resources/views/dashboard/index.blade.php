@@ -11,19 +11,19 @@
 
             <div class="p-6 bg-white overflow-hidden shadow-sm rounded-lg">
                 <h3 class="text-lg font-medium text-gray-900">Active Users</h3>
-                <p class="text-3xl font-bold text-indigo-600">100</p>
+                <p class="text-3xl font-bold text-indigo-600">{{ $analytics['activeUsers'] }}</p>
                 <p class="text-sm text-gray-500">Last 30 days</p>
             </div>
 
             <div class="p-6 bg-white overflow-hidden shadow-sm rounded-lg">
                 <h3 class="text-lg font-medium text-gray-900">Total Jobs</h3>
-                <p class="text-3xl font-bold text-indigo-600">100</p>
+                <p class="text-3xl font-bold text-indigo-600">{{ $analytics['totalJobs'] }}</p>
                 <p class="text-sm text-gray-500">All time</p>
             </div>
 
             <div class="p-6 bg-white overflow-hidden shadow-sm rounded-lg">
                 <h3 class="text-lg font-medium text-gray-900">Total Applications</h3>
-                <p class="text-3xl font-bold text-indigo-600">100</p>
+                <p class="text-3xl font-bold text-indigo-600">{{ $analytics['totalApplications'] }}</p>
                 <p class="text-sm text-gray-500">All time</p>
             </div>
         </div>
