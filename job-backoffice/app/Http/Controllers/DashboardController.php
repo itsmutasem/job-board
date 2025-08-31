@@ -21,6 +21,12 @@ class DashboardController extends Controller
         // Total applications (not deleted)
         $totalApplications = JobApplication::whereNull('deleted_at')->count();
 
-        return view('dashboard.index');
+        $analytics = [
+            'activeUsers' => $activeUsers,
+            'totalJobs' => $totalJobs,
+            'totalApplications' => $totalApplications
+        ];
+
+        return view('dashboard.index', compact('analytics'));
     }
 }
