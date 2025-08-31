@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobApplication;
 use App\Models\JobVacancy;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,6 +17,9 @@ class DashboardController extends Controller
 
         // Total jobs (not deleted)
         $totalJobs = JobVacancy::whereNull('deleted_at')->count();
+
+        // Total applications (not deleted)
+        $totalApplications = JobApplication::whereNull('deleted_at')->count();
 
         return view('dashboard.index');
     }
