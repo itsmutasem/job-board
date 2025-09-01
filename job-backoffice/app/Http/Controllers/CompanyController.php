@@ -72,9 +72,14 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id = null)
     {
-        $company = Company::findOrFail($id);
+        if ($id){
+            $company = Company::findOrFail($id);
+        } else {
+            $company = Company::where('ownerId', auth()->user()->id)->first();
+        }
+
         return view('company.show', compact('company'));
     }
 
