@@ -86,9 +86,14 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id = null)
     {
-        $company = Company::findOrFail($id);
+        if ($id) {
+            $company = Company::findOrFail($id);
+        } else {
+            $company = Company::where('ownerId', auth()->user()->id)->first();
+        }
+
         $industries = $this->industries;
         return view('company.edit', compact('company', 'industries'));
     }
