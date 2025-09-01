@@ -109,7 +109,11 @@ class CompanyController extends Controller
             $ownerData['owner_password'] = $validated['owner_password'];
         }
         $company->owner->update($ownerData);
-        
+
+        if (auth()->user()->role == 'owner-company') {
+            return redirect()->route('my-company.show')->with('update', 'Your company updated successfully!');
+        }
+
         if ($request->query('redirectToList') == 'false') {
             return redirect()->route('companies.show', $company->id)->with('update', 'Company updated successfully!');
         }
