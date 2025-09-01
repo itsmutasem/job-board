@@ -110,7 +110,7 @@ class CompanyController extends Controller
         }
         $company->owner->update($ownerData);
 
-        if (auth()->user()->role == 'owner-company') {
+        if (auth()->user()->role == 'company-owner') {
             return redirect()->route('my-company.show')->with('update', 'Your company updated successfully!');
         }
 
