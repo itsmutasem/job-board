@@ -77,11 +77,24 @@ class DashboardController extends Controller
             })
             ->count();
 
+        // Total jobs of the company
+        $totalJobs = $company->jobVacancies->count();
+
+        // Total applications of the company
+        $totalApplications = JobApplication::whereIn('jobVacancyId', $company->jobvacancies->pluck('id'))->count();
+
+        // Most applied jobs of the company
+        $mostAppliedJobs = JobVacancy::withCount('jobApplications as totalCount')
+            ->whereIn('id', $company->jobVacancies->pluck('id'))
+            ->limit(5)
+            ->orderByDesc('totalCount')
+            ->get();
+
         $analytics = [
             'activeUsers' => $activeUsers,
-            'totalJobs' => 0,
-            'totalApplications' => 0,
-            'mostAppliedJobs' => [],
+            'totalJobs' => $totalJobs,
+            'totalApplications' => $totalApplications,
+            'mostAppliedJobs' => $mostAppliedJobs,
             'conversionRates' => [],
         ];
 

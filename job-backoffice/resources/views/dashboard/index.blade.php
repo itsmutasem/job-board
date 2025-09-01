@@ -36,7 +36,9 @@
                     <thead>
                     <tr class="text-left">
                         <th class="py-2 uppercase text-gray-500">Job Title</th>
-                        <th class="py-2 uppercase text-gray-500">Company</th>
+                        @if(auth()->user()->role == 'admin')
+                            <th class="py-2 uppercase text-gray-500">Company</th>
+                        @endif
                         <th class="py-2 uppercase text-gray-500">Total Applications</th>
                     </tr>
                     </thead>
@@ -44,7 +46,9 @@
                     @foreach($analytics['mostAppliedJobs'] as $job)
                         <tr>
                             <td class="py-4">{{ $job->title }}</td>
-                            <td class="py-4">{{ $job->company->name }}</td>
+                            @if(auth()->user()->role == 'admin')
+                                <td class="py-4">{{ $job->company->name }}</td>
+                            @endif
                             <td class="py-4">{{ $job->totalCount }}</td>
                         </tr>
                     @endforeach
