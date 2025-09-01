@@ -16,6 +16,8 @@ class DashboardController extends Controller
         } else {
             $analytics = $this->companyOwnerDashboard();
         }
+
+        return view('dashboard.index', compact('analytics'));
     }
 
     private function adminDashboard()
@@ -58,6 +60,29 @@ class DashboardController extends Controller
             'totalApplications' => $totalApplications,
             'mostAppliedJobs' => $mostAppliedJobs,
             'conversionRates' => $conversionRates,
+        ];
+
+        return $analytics;
+    }
+
+    private function companyOwnerDashboard()
+    {
+        $company = auth()->user()->company;
+
+        // Filter active users by applying to jobs of the company
+        $activeUsers = User::where('last_login_at', '>=', now()->subDays(30))
+            ->where('role', 'job-seeker')
+            ->whereHas('jobApplications', function ($query) use ($company) {
+                $query->whereIn('jobVacancyId', $company->jobVacancies->pluck('id'));
+            })
+            ->count();
+
+        $analytics = [
+            'activeUsers' => $activeUsers,
+            'totalJobs' => 0,
+            'totalApplications' => 0,
+            'mostAppliedJobs' => [],
+            'conversionRates' => [],
         ];
 
         return $analytics;

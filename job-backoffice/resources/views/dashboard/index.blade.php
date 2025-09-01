@@ -41,7 +41,7 @@
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                    @foreach($mostAppliedJobs as $job)
+                    @foreach($analytics['mostAppliedJobs'] as $job)
                         <tr>
                             <td class="py-4">{{ $job->title }}</td>
                             <td class="py-4">{{ $job->company->name }}</td>
@@ -67,7 +67,7 @@
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                    @foreach($conversionRates as $conversionRate)
+                    @foreach($analytics['conversionRates'] as $conversionRate)
                         <tr>
                             <td class="py-4">{{ $conversionRate->title }}</td>
                             <td class="py-4">{{ $conversionRate->viewCount }}</td>
