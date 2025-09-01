@@ -9,7 +9,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth')->group(function () {
+// Sheared Routes
+Route::middleware(['auth', 'role:admin,company-owner'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('companies', CompanyController::class);
@@ -27,9 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class);
     Route::put('users/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
 });
 
+// Company Routes
+
+// Admin Routes
 require __DIR__.'/auth.php';
