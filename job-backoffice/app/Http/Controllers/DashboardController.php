@@ -90,12 +90,28 @@ class DashboardController extends Controller
             ->orderByDesc('totalCount')
             ->get();
 
+        // conversion rates of the company
+        $conversionRate = JobVacancy::withCount('jobApplications as totalCount')
+            ->whereIn('id', $company->jobVacancies->pluck('id'))
+            ->having('totalCount', '>', 0)
+            ->limit(5)
+            ->orderByDesc('totalCount')
+            ->get()
+            ->map(function ($job) {
+                if ($job->viewCount > 0) {
+                    $job->conversionRate = round($job->totalCount / $job->viewCount * 100, 2);
+                } else {
+                    $job->conversionRate = 0;
+                }
+                return $job;
+            });
+
         $analytics = [
             'activeUsers' => $activeUsers,
             'totalJobs' => $totalJobs,
             'totalApplications' => $totalApplications,
             'mostAppliedJobs' => $mostAppliedJobs,
-            'conversionRates' => [],
+            'conversionRates' => $conversionRate,
         ];
 
         return $analytics;
