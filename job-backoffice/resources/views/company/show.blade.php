@@ -38,6 +38,7 @@
                 @endif
             </div>
 
+            @if(auth()->user()->role == 'admin')
 {{--            Tabs Navigation --}}
             <div class="mb-6">
                 <ul class="flex space-x-4">
@@ -125,6 +126,7 @@
                     </table>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </x-app-layout>
