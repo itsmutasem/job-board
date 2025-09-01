@@ -28,12 +28,14 @@
                 <a href="{{ route('companies.edit', ['company' => $company->id, 'redirectToList' => 'false']) }}"
                    class="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">Edit</a>
                 {{-- Archive Button --}}
+                @if(auth()->user()->role == 'admin')
                 <form action="{{ route('companies.destroy', $company->id) }}" method="POST"
                       class="inline-block">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">Archive</button>
                 </form>
+                @endif
             </div>
 
 {{--            Tabs Navigation --}}
