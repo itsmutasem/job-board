@@ -1,5 +1,6 @@
 {
     "name": "job/shared",
+    "version": "1.0.0",
     "description": "This is a shared package to have shared logic of models",
     "type": "library",
     "require": {
