@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobVacancy;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        $jobs = JobVacancy::query()->latest()->paginate(10)->withQueryString();
+        return view('dashboard', compact('jobs'));
     }
 }
