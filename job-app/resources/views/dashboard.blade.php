@@ -30,15 +30,20 @@
 
 {{--            Job List --}}
             <div class="space-y-4 mt-4">
-                <div class="border-b border-white/10 pb-4 flex justify-between items-center">
-{{--                    Job Item --}}
-                    <div>
-                        <a href="" class="text-lg font-semibold text-indigo-500 hover:underline">Job Title</a>
-                        <p class="text-sm text-white">Company Name - Location</p>
-                        <p class="text-sm text-white">Salary</p>
+                @foreach($jobs as $job)
+                    <div class="border-b border-white/10 pb-4 flex justify-between items-center">
+    {{--                    Job Item --}}
+                        <div>
+                            <a href="" class="text-lg font-semibold text-indigo-500 hover:underline">{{ $job->title }}</a>
+                            <p class="text-sm text-white">{{ $job->company->name }} - {{ $job->location }}</p>
+                            <p class="text-sm text-white">${{ number_format($job->salary) }} / Year</p>
+                        </div>
+                        <span class="bg-indigo-500 text-white p-2 rounded-lg">{{ $job->type }}</span>
                     </div>
-                    <span class="bg-indigo-500 text-white p-2 rounded-lg">Job Type</span>
-                </div>
+                @endforeach
+            </div>
+            <div class="mt-6">
+                {{ $jobs->links() }}
             </div>
         </div>
     </div>
