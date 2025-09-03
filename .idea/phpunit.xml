@@ -5,6 +5,8 @@
       <list>
         <option value="$PROJECT_DIR$/job-backoffice/tests/Unit" />
         <option value="$PROJECT_DIR$/job-backoffice/tests/Feature" />
+        <option value="$PROJECT_DIR$/job-app/tests/Unit" />
+        <option value="$PROJECT_DIR$/job-app/tests/Feature" />
       </list>
     </option>
   </component>

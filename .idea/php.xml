@@ -274,6 +274,7 @@
       <path value="$PROJECT_DIR$/job-backoffice/vendor/fidry/cpu-core-counter" />
       <path value="$PROJECT_DIR$/job-backoffice/vendor/composer" />
       <path value="$PROJECT_DIR$/job-backoffice/vendor/job/shared" />
+      <path value="$PROJECT_DIR$/job-app/vendor/job/shared" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2">
@@ -285,6 +286,7 @@
   <component name="PhpUnit">
     <phpunit_settings>
       <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/job-backoffice/phpunit.xml" custom_loader_path="$PROJECT_DIR$/job-backoffice/vendor/autoload.php" paratest_path="$PROJECT_DIR$/job-backoffice/vendor/bin/paratest_for_phpstorm" use_configuration_file="true" />
+      <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/job-app/phpunit.xml" custom_loader_path="$PROJECT_DIR$/job-app/vendor/autoload.php" paratest_path="$PROJECT_DIR$/job-app/vendor/bin/paratest_for_phpstorm" use_configuration_file="true" />
     </phpunit_settings>
   </component>
   <component name="PsalmOptionsConfiguration">
