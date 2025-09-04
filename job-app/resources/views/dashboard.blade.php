@@ -17,23 +17,27 @@
                 <form action="{{ route('dashboard') }}" method="get" class="flex items-center justify-center w-1/4">
                     <input type="text" name="search" value="{{ request('search') }}" class="w-full rounded-l-lg bg-white/10 text-white border-white/10" placeholder="search for a job">
                     <button type="submit" class="bg-indigo-500 text-white p-2 rounded-r-lg border border-indigo-500">Search</button>
+
+                    @if(request('filter'))
+                        <input type="hidden" name="filter" value="{{ request('filter') }}">
+                    @endif
                 </form>
 
 {{--                Filters --}}
                 <div class="flex space-x-2">
-                    <a href="{{ route('dashboard', ['filter' => 'Full-Time']) }}"
+                    <a href="{{ route('dashboard', ['filter' => 'Full-Time', 'search' => request('search')]) }}"
                        class="bg-indigo-500 text-white p-2 rounded-lg">
                         Full-Time
                     </a>
-                    <a href="{{ route('dashboard', ['filter' => 'Remote']) }}"
+                    <a href="{{ route('dashboard', ['filter' => 'Remote', 'search' => request('search')]) }}"
                        class="bg-indigo-500 text-white p-2 rounded-lg">
                         Remote
                     </a>
-                    <a href="{{ route('dashboard', ['filter' => 'Hybrid']) }}"
+                    <a href="{{ route('dashboard', ['filter' => 'Hybrid', 'search' => request('search')]) }}"
                        class="bg-indigo-500 text-white p-2 rounded-lg">
                         Hybrid
                     </a>
-                    <a href="{{ route('dashboard', ['filter' => 'Contract']) }}"
+                    <a href="{{ route('dashboard', ['filter' => 'Contract', 'search' => request('search')]) }}"
                        class="bg-indigo-500 text-white p-2 rounded-lg">
                         Contract
                     </a>
