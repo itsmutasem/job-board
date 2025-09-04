@@ -21,6 +21,13 @@
                     @if(request('filter'))
                         <input type="hidden" name="filter" value="{{ request('filter') }}">
                     @endif
+
+                    @if(request('search'))
+                        <a href="{{ route('dashboard', ['filter' => request('filter')]) }}"
+                           class="text-white p-2 rounded-lg">
+                            Clear
+                        </a>
+                    @endif
                 </form>
 
 {{--                Filters --}}
@@ -41,6 +48,13 @@
                        class="bg-indigo-500 text-white p-2 rounded-lg">
                         Contract
                     </a>
+
+                    @if(request('filter'))
+                        <a href="{{ route('dashboard', ['search' => request('search')]) }}"
+                           class="text-white p-2 rounded-lg">
+                            Clear
+                        </a>
+                    @endif
                 </div>
             </div>
 
