@@ -20,6 +20,10 @@ class DashboardController extends Controller
                 });
         }
 
+        if ($request->has('filter')) {
+            $query->where('type', $request->filter);
+        }
+
         $jobs = $query->latest()->paginate(10)->withQueryString();
         return view('dashboard', compact('jobs'));
     }
