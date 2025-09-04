@@ -24,6 +24,13 @@
                             <p class="text-sm bg-indigo-500 text-white p-2 rounded-lg">{{ $jobVacancy->type }}</p>
                         </div>
                     </div>
+
+                    <div>
+                        <a href="{{ route('job-vacancies.apply', $jobVacancy->id) }}"
+                           class="justify-center bg-gradient-to-r from-indigo-500 to-rose-500 text-white rounded-lg px-4 py-2 transition hover:from-indigo-600 hover:to-rose-600">
+                            Apply Now
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
