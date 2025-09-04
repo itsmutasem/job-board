@@ -12,7 +12,18 @@ class DashboardController extends Controller
     {
         $query = JobVacancy::query();
 
-        if ($request->has('search')) {
+        if ($request->search && $request->filter) {
+            $query->where(function ($q) use ($request) {
+                $q->where('title', 'like', '%' . $request->search . '%')
+                    ->orWhere('location', 'like', '%' . $request->search . '%')
+                    ->orWhereHas('company', function ($query) use ($request) {
+                        $query->where('name', 'like', '%' . $request->search . '%');
+                    });
+                })
+                ->where('type', $request->filter);
+        }
+
+        if ($request->has('search') && $request->filter === null) {
             $query->where('title', 'like', '%' . $request->search . '%')
                 ->orWhere('location', 'like', '%' . $request->search . '%')
                 ->orWhereHas('company', function ($query) use ($request) {
@@ -20,7 +31,7 @@ class DashboardController extends Controller
                 });
         }
 
-        if ($request->has('filter')) {
+        if ($request->has('filter' && $request->search === null)) {
             $query->where('type', $request->filter);
         }
 
