@@ -33,6 +33,42 @@
                     </div>
                 </div>
             </div>
+
+            <div class="grid grid-cols-3 gap-4 mt-6">
+                <div class="col-span-2">
+                    <h2 class="text-lg font-bold text-white">Job Description</h2>
+                    <p class="text-gray-400">{{ $jobVacancy->description }}</p>
+                </div>
+                <div class="col-span-1 ...">
+                    <h2 class="text-lg font-bold text-white">Job Overview</h2>
+                    <div class="bg-gray-900 rounded-lg p-6 space-y-4">
+                        <div>
+                            <p class="text-gray-400">Published Date</p>
+                            <p class="text-white">{{ $jobVacancy->created_at->format('M d, Y') }}</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-400">Company</p>
+                            <p class="text-white">{{ $jobVacancy->company->name }}</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-400">Location</p>
+                            <p class="text-white">{{ $jobVacancy->location }}</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-400">Salary</p>
+                            <p class="text-white">${{ number_format($jobVacancy->salary) }}</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-400">Type</p>
+                            <p class="text-white">{{ $jobVacancy->type }}</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-400">Category</p>
+                            <p class="text-white">{{ $jobVacancy->jobCategory->name }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>
