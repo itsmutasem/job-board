@@ -21,10 +21,22 @@
 
 {{--                Filters --}}
                 <div class="flex space-x-2">
-                    <a href="" class="bg-indigo-500 text-white p-2 rounded-lg">Full Time</a>
-                    <a href="" class="bg-indigo-500 text-white p-2 rounded-lg">Remote</a>
-                    <a href="" class="bg-indigo-500 text-white p-2 rounded-lg">Hybrid</a>
-                    <a href="" class="bg-indigo-500 text-white p-2 rounded-lg">Contract</a>
+                    <a href="{{ route('dashboard', ['filter' => 'Full-Time']) }}"
+                       class="bg-indigo-500 text-white p-2 rounded-lg">
+                        Full-Time
+                    </a>
+                    <a href="{{ route('dashboard', ['filter' => 'Remote']) }}"
+                       class="bg-indigo-500 text-white p-2 rounded-lg">
+                        Remote
+                    </a>
+                    <a href="{{ route('dashboard', ['filter' => 'Hybrid']) }}"
+                       class="bg-indigo-500 text-white p-2 rounded-lg">
+                        Hybrid
+                    </a>
+                    <a href="{{ route('dashboard', ['filter' => 'Contract']) }}"
+                       class="bg-indigo-500 text-white p-2 rounded-lg">
+                        Contract
+                    </a>
                 </div>
             </div>
 
