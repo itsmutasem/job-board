@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/job-applications', [JobApplicationsController::class, 'index'])->name('job-applications.index');
 
     Route::get('/job-vacancies/{id}', [JobVacancyController::class, 'show'])->name('job-vacancies.show');
+    Route::get('/job-vacancies/{id}/apply', [JobVacancyController::class, 'apply'])->name('job-vacancies.apply');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
