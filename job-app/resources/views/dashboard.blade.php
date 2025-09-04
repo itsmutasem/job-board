@@ -30,7 +30,7 @@
 
 {{--            Job List --}}
             <div class="space-y-4 mt-4">
-                @foreach($jobs as $job)
+                @forelse($jobs as $job)
                     <div class="border-b border-white/10 pb-4 flex justify-between items-center">
     {{--                    Job Item --}}
                         <div>
@@ -40,7 +40,9 @@
                         </div>
                         <span class="bg-indigo-500 text-white p-2 rounded-lg">{{ $job->type }}</span>
                     </div>
-                @endforeach
+                @empty
+                    <p class="text-white text-2xl font-bold">No jobs found!</p>
+                @endforelse
             </div>
             <div class="mt-6">
                 {{ $jobs->links() }}
