@@ -31,7 +31,7 @@ class DashboardController extends Controller
                 });
         }
 
-        if ($request->has('filter' && $request->search === null)) {
+        if ($request->has('filter') && $request->search === null) {
             $query->where('type', $request->filter);
         }
 
