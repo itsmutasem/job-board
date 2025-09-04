@@ -14,8 +14,8 @@
 {{--            Search & Filters --}}
             <div class="flex items-center justify-between">
 {{--                Search Bar --}}
-                <form action="" class="flex items-center justify-center w-1/4">
-                    <input type="text" class="w-full rounded-l-lg bg-white/10 text-white border-white/10" placeholder="search for a job">
+                <form action="{{ route('dashboard') }}" method="get" class="flex items-center justify-center w-1/4">
+                    <input type="text" name="search" value="{{ request('search') }}" class="w-full rounded-l-lg bg-white/10 text-white border-white/10" placeholder="search for a job">
                     <button type="submit" class="bg-indigo-500 text-white p-2 rounded-r-lg border border-indigo-500">Search</button>
                 </form>
 
