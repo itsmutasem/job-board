@@ -4,12 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\JobVacancy;
 use Illuminate\Http\Request;
+use function Laravel\Prompts\search;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $jobs = JobVacancy::query()->latest()->paginate(10)->withQueryString();
+        $query = JobVacancy::query();
+
+        if ($request->has('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%')
+                ->orWhere('location', 'like', '%' . $request->search . '%')
+                ->orWhereHas('company', function ($query) use ($request) {
+                    $query->where('name', 'like', '%' . $request->search . '%');
+                });
+        }
+
+        $jobs = $query->latest()->paginate(10)->withQueryString();
         return view('dashboard', compact('jobs'));
     }
 }
