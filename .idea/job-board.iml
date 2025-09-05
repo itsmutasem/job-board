@@ -15,6 +15,9 @@
       <sourceFolder url="file://$MODULE_DIR$/job-app/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/job-app/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/job-app/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/job-backoffice/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/job-backoffice/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/job-backoffice/tests/Unit" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/brianium/paratest" />
       <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/carbonphp/carbon-doctrine-types" />
@@ -273,6 +276,10 @@
       <excludeFolder url="file://$MODULE_DIR$/job-backoffice/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/job-backoffice/vendor/job/shared" />
       <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/job/shared" />
+      <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/openai-php/client" />
+      <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/openai-php/laravel" />
+      <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/php-http/discovery" />
+      <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/php-http/multipart-stream-builder" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
