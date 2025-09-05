@@ -33,7 +33,7 @@ class JobVacancyController extends Controller
         $path = $file->storeAs('resumes', $fileName, 'cloud');
         // $fileUrl = config('filesystems.disks.cloud.url') . '/' . $path;
         $resume = Resume::create([
-            'fileName' => $originalFileName,
+            'filename' => $originalFileName,
             'fileUri' => $path,
             'userId' => auth()->id(),
             'contactDetails' => json_encode([
@@ -48,7 +48,7 @@ class JobVacancyController extends Controller
 
         JobApplication::create([
             'status' => 'pending',
-            'jobId' => $id,
+            'jobVacancyId' => $id,
             'resumeId' => $resume->id,
             'userId' => auth()->id(),
             'aiGeneratedScore' => 0,
