@@ -279,6 +279,9 @@
       <path value="$PROJECT_DIR$/job-app/vendor/php-http/multipart-stream-builder" />
       <path value="$PROJECT_DIR$/job-app/vendor/openai-php/client" />
       <path value="$PROJECT_DIR$/job-app/vendor/openai-php/laravel" />
+      <path value="$PROJECT_DIR$/job-app/vendor/mtdowling/jmespath.php" />
+      <path value="$PROJECT_DIR$/job-app/vendor/aws/aws-crt-php" />
+      <path value="$PROJECT_DIR$/job-app/vendor/aws/aws-sdk-php" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2">

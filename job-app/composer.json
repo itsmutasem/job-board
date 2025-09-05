@@ -13,6 +13,7 @@
     ],
     "require": {
         "php": "^8.2",
+        "aws/aws-sdk-php": "^3.356",
         "job/shared": "*",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
