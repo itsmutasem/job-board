@@ -12,9 +12,6 @@
       <sourceFolder url="file://$MODULE_DIR$/job-backoffice/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/job-app/spec" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/job-app/tests/Feature" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/job-app/tests/Unit" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/job-backoffice/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/job-backoffice/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/job-backoffice/tests/Unit" isTestSource="true" />
@@ -276,6 +273,10 @@
       <excludeFolder url="file://$MODULE_DIR$/job-backoffice/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/job-backoffice/vendor/job/shared" />
       <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/job/shared" />
+      <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/aws/aws-crt-php" />
+      <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/aws/aws-sdk-php" />
+      <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/league/flysystem-aws-s3-v3" />
+      <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/mtdowling/jmespath.php" />
       <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/openai-php/client" />
       <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/openai-php/laravel" />
       <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/php-http/discovery" />
