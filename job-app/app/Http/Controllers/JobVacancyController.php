@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ApplyJobRequest;
+use App\Models\JobApplication;
 use App\Models\JobVacancy;
 use App\Models\Resume;
 use Illuminate\Http\Request;
@@ -44,5 +45,16 @@ class JobVacancyController extends Controller
             'experience' => '',
             'education' => '',
         ]);
+
+        JobApplication::create([
+            'status' => 'pending',
+            'jobId' => $id,
+            'resumeId' => $resume->id,
+            'userId' => auth()->id(),
+            'aiGeneratedScore' => 0,
+            'aiGeneratedFeedBach' => '',
+        ]);
+
+        return redirect()->route('job-applications.index', $id)->with('success', 'Application submitted successfully');
     }
 }
