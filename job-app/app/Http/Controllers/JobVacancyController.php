@@ -25,36 +25,38 @@ class JobVacancyController extends Controller
 
     public function processApplication(ApplyJobRequest $request, string $id)
     {
-        $file = $request->file('resume_file');
-        $extension = $file->getClientOriginalExtension();
-        $originalFileName = $file->getClientOriginalName();
-        $fileName = 'resume_' . time() . '.' . $extension;
+        if ($request->input('resume_option') === 'new_resume') {
+            $file = $request->file('resume_file');
+            $extension = $file->getClientOriginalExtension();
+            $originalFileName = $file->getClientOriginalName();
+            $fileName = 'resume_' . time() . '.' . $extension;
 
-        // Store in Laravel Cloud
-        $path = $file->storeAs('resumes', $fileName, 'cloud');
-        // $fileUrl = config('filesystems.disks.cloud.url') . '/' . $path;
-        $resume = Resume::create([
-            'filename' => $originalFileName,
-            'fileUri' => $path,
-            'userId' => auth()->id(),
-            'contactDetails' => json_encode([
-                'name' => auth()->user()->name,
-                'email' => auth()->user()->email,
-            ]),
-            'summary' => '',
-            'skills' => '',
-            'experience' => '',
-            'education' => '',
-        ]);
+            // Store in Laravel Cloud
+            $path = $file->storeAs('resumes', $fileName, 'cloud');
+            // $fileUrl = config('filesystems.disks.cloud.url') . '/' . $path;
+            $resume = Resume::create([
+                'filename' => $originalFileName,
+                'fileUri' => $path,
+                'userId' => auth()->id(),
+                'contactDetails' => json_encode([
+                    'name' => auth()->user()->name,
+                    'email' => auth()->user()->email,
+                ]),
+                'summary' => '',
+                'skills' => '',
+                'experience' => '',
+                'education' => '',
+            ]);
 
-        JobApplication::create([
-            'status' => 'pending',
-            'jobVacancyId' => $id,
-            'resumeId' => $resume->id,
-            'userId' => auth()->id(),
-            'aiGeneratedScore' => 0,
-            'aiGeneratedFeedBach' => '',
-        ]);
+            JobApplication::create([
+                'status' => 'pending',
+                'jobVacancyId' => $id,
+                'resumeId' => $resume->id,
+                'userId' => auth()->id(),
+                'aiGeneratedScore' => 0,
+                'aiGeneratedFeedBach' => '',
+            ]);
+        }
 
         return redirect()->route('job-applications.index', $id)->with('success', 'Application submitted successfully');
     }
