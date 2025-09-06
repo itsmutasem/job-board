@@ -22,13 +22,15 @@ class ApplyJobRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'resume_file' => 'bail|required|file|mimes:pdf|max:5120',
+            'resume_option' => 'bail|required|string' ,
+            'resume_file' => 'bail|required_if:resume_option,new_resume|file|mimes:pdf|max:5120',
         ];
     }
 
     public function messages(): array
     {
         return [
+            'resume_option.required' => 'Pleas select a resume option.',
             'resume_file.required' => 'The resume file is required.',
             'resume_file.file' => 'The resume file must be a file.',
         ];
