@@ -19,7 +19,8 @@ class JobVacancyController extends Controller
     public function apply(string $id)
     {
         $jobVacancy = JobVacancy::findOrFail($id);
-        return view('job-vacancies.apply', compact('jobVacancy'));
+        $resumes = auth()->user()->resumes;
+        return view('job-vacancies.apply', compact('jobVacancy', 'resumes'));
     }
 
     public function processApplication(ApplyJobRequest $request, string $id)
