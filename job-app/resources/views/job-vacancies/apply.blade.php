@@ -49,10 +49,10 @@
                         <div class="space-y-4">
                             @forelse($resumes as $resume)
                                 <div class="flex items-center gap-2">
-                                    <input type="radio" name="resume_option" id="existing_{{ $resume->id }}"
+                                    <input type="radio" name="resume_option" id="{{ $resume->id }}"
                                            @error('resume_options') class="border-red-500" @else class="border-gray-600" @enderror
-                                           value="existing_{{ $resume->id }}">
-                                    <x-input-label for="existing_{{ $resume->id }}" class="text-white cursor-pointer">
+                                           value="{{ $resume->id }}">
+                                    <x-input-label for="{{ $resume->id }}" class="text-white cursor-pointer">
                                         {{ $resume->filename }}
                                         <span class="text-gray-400 text-sm">(Last Updated: {{ $resume->updated_at->format('M d, Y') }})</span>
                                     </x-input-label>
