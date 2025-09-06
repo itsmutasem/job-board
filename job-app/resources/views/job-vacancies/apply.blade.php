@@ -52,10 +52,10 @@
                                     <input type="radio" name="resume_option" id="existing_{{ $resume->id }}"
                                            @error('resume_options') class="border-red-500" @else class="border-gray-600" @enderror
                                            value="existing_{{ $resume->id }}">
-                                    <label for="existing_{{ $resume->id }}" class="text-white cursor-pointer">
+                                    <x-input-label for="existing_{{ $resume->id }}" class="text-white cursor-pointer">
                                         {{ $resume->filename }}
                                         <span class="text-gray-400 text-sm">(Last Updated: {{ $resume->updated_at->format('M d, Y') }})</span>
-                                    </label>
+                                    </x-input-label>
                                 </div>
                                 @empty
                                     <span class="text-gray-400 text-sm">No resume found.</span>
@@ -66,7 +66,11 @@
 
 {{--                Upload New Resume --}}
                 <div x-data="{ fileName: '', hasError: {{ $errors->has('resume_file') ? 'true' : 'false' }} }">
-                    <x-input-label for="resume" value="Or upload a new resumes:" />
+                    <div class="flex items-center gap-2">
+                        <input type="radio" name="resume_option" id="new_resume" value="new_resume"
+                               @error('resume_options') class="border-red-500" @else class="border-gray-600" @enderror>
+                        <x-input-label class="text-white cursor-pointer" for="new_resume" value="Upload a new resumes:" />
+                    </div>
                     <div class="flex items-center">
                         <div class="flex-1">
                             <label for="new_resume_file" class="block text-white cursor-pointer">
