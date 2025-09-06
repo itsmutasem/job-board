@@ -67,7 +67,7 @@
 {{--                Upload New Resume --}}
                 <div x-data="{ fileName: '', hasError: {{ $errors->has('resume_file') ? 'true' : 'false' }} }">
                     <div class="flex items-center gap-2">
-                        <input type="radio" name="resume_option" id="new_resume" value="new_resume"
+                        <input x-ref="newResumeRadio" type="radio" name="resume_option" id="new_resume" value="new_resume"
                                @error('resume_options') class="border-red-500" @else class="border-gray-600" @enderror>
                         <x-input-label class="text-white cursor-pointer" for="new_resume" value="Upload a new resumes:" />
                     </div>
@@ -76,7 +76,7 @@
                             <label for="new_resume_file" class="block text-white cursor-pointer">
                                 <div class="border-2 border-dashed border-gray-600 rounded-lg p-4 hover:border-blue-500 transition"
                                     :class="{'border-blue-500': fileName, 'border-red-500': hasError }">
-                                    <input @change="fileName = $event.target.files[0].name" type="file" name="resume_file" id="new_resume_file" class="hidden" accept=".pdf">
+                                    <input @change="fileName = $event.target.files[0].name; $refs.newResumeRadio.checked = true" type="file" name="resume_file" id="new_resume_file" class="hidden" accept=".pdf">
                                     <div class="text-center">
                                         <template x-if="!fileName">
                                             <p class="text-gray-400">Click to upload PDF (Max 5MB)</p>
