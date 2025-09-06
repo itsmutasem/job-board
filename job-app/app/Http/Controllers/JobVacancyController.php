@@ -25,6 +25,9 @@ class JobVacancyController extends Controller
 
     public function processApplication(ApplyJobRequest $request, string $id)
     {
+        $resumeId = null;
+        $extractedInfo = null;
+
         if ($request->input('resume_option') === 'new_resume') {
             $file = $request->file('resume_file');
             $extension = $file->getClientOriginalExtension();
@@ -34,6 +37,16 @@ class JobVacancyController extends Controller
             // Store in Laravel Cloud
             $path = $file->storeAs('resumes', $fileName, 'cloud');
             // $fileUrl = config('filesystems.disks.cloud.url') . '/' . $path;
+
+            // TODO: Extract information for the resume
+            //$extractedInfo = $this->extractInformationFormResume($file);
+            $extractedInfo = [
+                'summary' => '',
+                'skills' => '',
+                'experience' => '',
+                'education' => '',
+            ];
+
             $resume = Resume::create([
                 'filename' => $originalFileName,
                 'fileUri' => $path,
@@ -42,21 +55,36 @@ class JobVacancyController extends Controller
                     'name' => auth()->user()->name,
                     'email' => auth()->user()->email,
                 ]),
-                'summary' => '',
-                'skills' => '',
-                'experience' => '',
-                'education' => '',
+                'summary' => $extractedInfo['summary'],
+                'skills' => $extractedInfo['skills'],
+                'experience' => $extractedInfo['experience'],
+                'education' => $extractedInfo['education'],
             ]);
 
-            JobApplication::create([
-                'status' => 'pending',
-                'jobVacancyId' => $id,
-                'resumeId' => $resume->id,
-                'userId' => auth()->id(),
-                'aiGeneratedScore' => 0,
-                'aiGeneratedFeedBach' => '',
-            ]);
+            $resumeId = $resume->id;
+
+        } else {
+            $resumeId = $request->input('resume_option');
+            $resume = Resume::findOrFail($resumeId);
+
+            $extractedInfo = [
+                'summary' => $resume->summary,
+                'skills' => $resume->skills,
+                'experience' => $resume->experience,
+                'education' => $resume->education,
+            ];
         }
+
+        // TODO: Evaluate Job Application
+
+        JobApplication::create([
+            'status' => 'pending',
+            'jobVacancyId' => $id,
+            'resumeId' => $resumeId,
+            'userId' => auth()->id(),
+            'aiGeneratedScore' => 0,
+            'aiGeneratedFeedBach' => '',
+        ]);
 
         return redirect()->route('job-applications.index', $id)->with('success', 'Application submitted successfully');
     }
