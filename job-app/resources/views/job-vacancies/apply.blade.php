@@ -46,7 +46,21 @@
                     <h3 class="text-xl font-semibold text-white mb-4">Choose Your Resume</h3>
                     <div class="mb-6">
                         <x-input-label for="resumes" value="Select form your existing resumes:" />
-{{--                       TODO: List of Resumes --}}
+                        <div class="space-y-4">
+                            @forelse($resumes as $resume)
+                                <div class="flex items-center gap-2">
+                                    <input type="radio" name="resume_option" id="existing_{{ $resume->id }}"
+                                           @error('resume_options') class="border-red-500" @else class="border-gray-600" @enderror
+                                           value="existing_{{ $resume->id }}">
+                                    <label for="existing_{{ $resume->id }}" class="text-white cursor-pointer">
+                                        {{ $resume->filename }}
+                                        <span class="text-gray-400 text-sm">(Last Updated: {{ $resume->updated_at->format('M d, Y') }})</span>
+                                    </label>
+                                </div>
+                                @empty
+                                    <span class="text-gray-400 text-sm">No resume found.</span>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
 
