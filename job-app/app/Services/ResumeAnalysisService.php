@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Storage;
+use Spatie\PdfToText\Pdf;
 
 class ResumeAnalysisService
 {
@@ -19,6 +20,7 @@ class ResumeAnalysisService
 
     public function extractTextFromPdf(string $fileUrl): string
     {
+        // Reading the file form the cloud to local disk storage in temp file
         $tempFile = tempnam(sys_get_temp_dir(), 'resume');
         $filePath = parse_url($fileUrl, PHP_URL_PATH);
 
@@ -55,5 +57,15 @@ class ResumeAnalysisService
         if (!$pdfToTextAvailable) {
             throw new \Exception('pdf-to-text is not installed');
         }
+
+        // Extract text form the pdf file
+        $instance = new PDF();
+        $instance->setPdf($tempFile);
+        $text = $instance->text();
+
+        // Clear up the temp file
+        unlink($tempFile);
+
+        return $text;
     }
 }
