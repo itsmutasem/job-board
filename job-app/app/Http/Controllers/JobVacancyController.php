@@ -46,8 +46,7 @@ class JobVacancyController extends Controller
             $path = $file->storeAs('resumes', $fileName, 'cloud');
 
             $fileUrl = config('filesystems.disks.cloud.url') . '/' . $path;
-
-            // TODO: Extract information for the resume
+            
             $extractedInfo = $this->resumeAnalysisService->extractResumeInformation($fileUrl);
 
             $resume = Resume::create([
