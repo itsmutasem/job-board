@@ -33,6 +33,17 @@ class ResumeAnalysisService
             'temperature' => 0.1
         ]);
 
+        $result = $response->choices[0]->message->content;
+        Log::debug('OpenAI response: ' . $result);
+
+        $parsedResult = json_decode($result, true);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            Log::error('Failed to parse OpenAI response: ' . json_last_error_msg());
+            throw new \Exception('Failed to parse OpenAI response');
+        }
+
+
         // Output: summary, skills, experience, education -> JSON
 
         // Return the JSON object
