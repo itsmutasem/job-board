@@ -16,6 +16,12 @@ class ResumeAnalysisService
         // Output: summary, skills, experience, education -> JSON
 
         // Return the JSON object
+        return [
+            'summary' => '',
+            'skills' => '',
+            'experience' => '',
+            'education' => ''
+        ];
     }
 
     public function extractTextFromPdf(string $fileUrl): string
