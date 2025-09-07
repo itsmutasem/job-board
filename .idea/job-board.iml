@@ -281,6 +281,7 @@
       <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/openai-php/laravel" />
       <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/php-http/discovery" />
       <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/php-http/multipart-stream-builder" />
+      <excludeFolder url="file://$MODULE_DIR$/job-app/vendor/spatie/pdf-to-text" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
