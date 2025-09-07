@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use OpenAI\Laravel\Facades\OpenAI;
 use Spatie\PdfToText\Pdf;
 
 class ResumeAnalysisService
@@ -16,6 +17,22 @@ class ResumeAnalysisService
         Log::debug('Successfully extracted text from pdf file' . strlen($rawText) . 'characters');
 
         // Use OpenAI API to organize the text info a structured format
+        $response = OpenAI::chat()->create([
+            'model' => 'gpt-4o-mini',
+            'messages' => [
+                'role' => 'system',
+                'content' => 'You are a precise resume parser. Extract information exactly as it appears in the resume without adding any interpretation or additional information. The output should be in JSON format.'
+            ],
+            [
+                'role' => 'user',
+                'content' => "Parse the following resume content and extract the information as a JSON object with the exact keys: 'summary', 'skills', 'experience', 'education'. The resume content is: {$rawText}. Return an empty string for key that if not found."
+            ],
+            'response_format' => [
+                'type' => 'json_object'
+            ],
+            'temperature' => 0.1
+        ]);
+
         // Output: summary, skills, experience, education -> JSON
 
         // Return the JSON object
