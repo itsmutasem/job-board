@@ -51,13 +51,13 @@ class ResumeAnalysisService
             Log::error('Missing required keys: ' . implode(', ' . $missingKeys));
             throw new \Exception('Missing required keys in the parsed result');
         }
-        
+
         // Return the JSON object
         return [
-            'summary' => '',
-            'skills' => '',
-            'experience' => '',
-            'education' => ''
+            'summary' => $parsedResult['summary'] ?? '',
+            'skills' => $parsedResult['skills'] ?? '',
+            'experience' => $parsedResult['experience'] ?? '',
+            'education' => $parsedResult['education'] ?? ''
         ];
     }
 
