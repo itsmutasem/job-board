@@ -52,25 +52,19 @@ class ResumeAnalysisService
 
         file_put_contents($tempFile, $pdfContent);
 
-        // Check if pdf-to-text is installed
-        $pdfToTextPath = ['C:\poppler\poppler-25.07.0\Library\bin\pdftotext.exe' ,'/mingw64/bin/pdftotext', '/usr/bin/pdftotext', '/usr/local/bin/pdftotext'];
-        $pdfToTextAvailable = false;
-
-        foreach ($pdfToTextPath as $path) {
-            if (file_exists($path)) {
-                $pdfToTextAvailable = true;
-                break;
-            }
+        // Set Poppler binary path depending on OS
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            // Windows
+            $binaryPath = 'C:/poppler/poppler-25.07.0/Library/bin/pdftotext.exe';
+        } else {
+            // Linux/macOS (common locations)
+            $binaryPath = '/usr/bin/pdftotext';
         }
 
-        if (!$pdfToTextAvailable) {
-            throw new \Exception('pdf-to-text is not installed');
-        }
-
-        // Extract text form the pdf file
-        $instance = new PDF();
-        $instance->setPdf($tempFile);
-        $text = $instance->text();
+        // Extract text using Spatie
+        $text = (new Pdf($binaryPath))
+            ->setPdf($tempFile)
+            ->text();
 
         // Clear up the temp file
         unlink($tempFile);
