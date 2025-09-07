@@ -40,5 +40,20 @@ class ResumeAnalysisService
         }
 
         file_put_contents($tempFile, $pdfContent);
+
+        // Check if pdf-to-text is installed
+        $pdfToTextPath = ['/mingw64/bin/pdftotext', '/usr/bin/pdftotext', '/usr/local/bin/pdftotext'];
+        $pdfToTextAvailable = false;
+
+        foreach ($pdfToTextPath as $path) {
+            if (file_exists($path)) {
+                $pdfToTextAvailable = true;
+                break;
+            }
+        }
+
+        if (!$pdfToTextAvailable) {
+            throw new \Exception('pdf-to-text is not installed');
+        }
     }
 }
