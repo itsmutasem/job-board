@@ -43,9 +43,15 @@ class ResumeAnalysisService
             throw new \Exception('Failed to parse OpenAI response');
         }
 
+        // Validate the parsed result
+        $requiredKeys = ['summary', 'skills', 'experience', 'education'];
+        $missingKeys = array_diff($requiredKeys, array_keys($parsedResult));
 
-        // Output: summary, skills, experience, education -> JSON
-
+        if (count($missingKeys) > 0) {
+            Log::error('Missing required keys: ' . implode(', ' . $missingKeys));
+            throw new \Exception('Missing required keys in the parsed result');
+        }
+        
         // Return the JSON object
         return [
             'summary' => '',
