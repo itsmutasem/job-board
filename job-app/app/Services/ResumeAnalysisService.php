@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Spatie\PdfToText\Pdf;
 
@@ -11,6 +12,8 @@ class ResumeAnalysisService
     {
         // Extract raw text form the resume pdf file (read pdf file, and get the text)
         $rawText = $this->extractTextFromPdf($fileUrl);
+
+        Log::debug('Successfully extracted text from pdf file' . strlen($rawText) . 'characters');
 
         // Use OpenAI API to organize the text info a structured format
         // Output: summary, skills, experience, education -> JSON
