@@ -37,7 +37,7 @@ class ResumeAnalysisService
             throw new \Exception('Invalid file URL');
         }
 
-        $filename = basname($filePath);
+        $filename = basename($filePath);
 
         $storagePath = "resumes/{$filename}";
 
@@ -53,7 +53,7 @@ class ResumeAnalysisService
         file_put_contents($tempFile, $pdfContent);
 
         // Check if pdf-to-text is installed
-        $pdfToTextPath = ['/mingw64/bin/pdftotext', '/usr/bin/pdftotext', '/usr/local/bin/pdftotext'];
+        $pdfToTextPath = ['C:\poppler\poppler-25.07.0\Library\bin\pdftotext.exe' ,'/mingw64/bin/pdftotext', '/usr/bin/pdftotext', '/usr/local/bin/pdftotext'];
         $pdfToTextAvailable = false;
 
         foreach ($pdfToTextPath as $path) {
