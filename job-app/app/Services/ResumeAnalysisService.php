@@ -116,6 +116,16 @@ class ResumeAnalysisService
             Log::debug('OpenAI evaluation response: ' . $result);
 
             $parsedResult = json_decode($result, true);
+
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                Log::error('Failed to parse OpenAI response: ' . json_last_error_msg());
+                throw new \Exception('Failed to parse OpenAI response');
+            }
+
+            if (!isset($parsedResult['aiGeneratedScore']) || !isset($parsedResult['aiGeneratedFeedback'])) {
+                Log::error('Missing required keys in the parsed result');
+                throw new \Exception('Missing required keys in the parsed result');
+            }
         } catch () {
 
         }
