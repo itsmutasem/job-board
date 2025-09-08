@@ -33,6 +33,7 @@ class JobVacancyController extends Controller
 
     public function processApplication(ApplyJobRequest $request, string $id)
     {
+        $jobVacancy = JobVacancy::findOrFail($id);
         $resumeId = null;
         $extractedInfo = null;
 
@@ -77,15 +78,16 @@ class JobVacancyController extends Controller
             ];
         }
 
-        // TODO: Evaluate Job Application
+        // Evaluate Job Application
+        $evaluation = $this->resumeAnalysisService->analyzeResume($jobVacancy, $extractedInfo);
 
         JobApplication::create([
             'status' => 'pending',
             'jobVacancyId' => $id,
             'resumeId' => $resumeId,
             'userId' => auth()->id(),
-            'aiGeneratedScore' => 0,
-            'aiGeneratedFeedBach' => '',
+            'aiGeneratedScore' => $evaluation['aiGeneratedScore'],
+            'aiGeneratedFeedback' => $evaluation['aiGeneratedFeedback']
         ]);
 
         return redirect()->route('job-applications.index', $id)->with('success', 'Application submitted successfully');
