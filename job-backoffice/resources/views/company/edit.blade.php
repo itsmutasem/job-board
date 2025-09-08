@@ -140,7 +140,7 @@
                             Cancel
                         </a>
                     @else
-                        <a href="{{ route('my-company.show') }}" class="inline-flex items-center py-2 bg-white text-gray-500 rounded-md hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
+                        <a href="{{ route('my-company.show') }}" class="inline-flex items-center py-2 text-gray-500 rounded-md hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
                             Cancel
                         </a>
                     @endif

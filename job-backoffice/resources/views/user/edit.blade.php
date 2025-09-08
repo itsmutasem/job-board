@@ -72,7 +72,7 @@
 
                     {{--                Action Buttons --}}
                     <div class="flex justify-end space-x-4">
-                        <a href="{{ route('users.index') }}" class="inline-flex items-center py-2 bg-white text-gray-500 rounded-md hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
+                        <a href="{{ route('users.index') }}" class="inline-flex items-center py-2 text-gray-500 rounded-md hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
                             Cancel
                         </a>
                         <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
