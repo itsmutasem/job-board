@@ -98,9 +98,19 @@ class ResumeAnalysisService
                             Provide a score form 0 to 100 for the candidate's suitability for the job, and a detailed feedback.
                             Response should only be JSON that has the following keys: 'aiGeneratedScore', 'aiGeneratedFeedback'.
                             AI generated feedback should be detailed and specific to the job and the candidate's resume."
+                    ],
+                    [
+                        'role' => 'user',
+                        'content' => "Pleas evaluate this job application.
+                            Job Details: {$jobDetails}.
+                            Resume Details: {$resumeDetails}"
                     ]
-                ]
-            ])
+                ],
+                'response_format' => [
+                    'type' => 'json_object'
+                ],
+                'temperature' => 0.1
+            ]);
         } catch () {
 
         }
