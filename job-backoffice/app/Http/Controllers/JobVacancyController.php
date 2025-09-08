@@ -50,7 +50,24 @@ class JobVacancyController extends Controller
     public function store(JobVacancyCreateRequest $request)
     {
         $validated = $request->validated();
-        JobVacancy::create($validated);
+
+        // Admin
+        if (auth()->user()->role == 'admin') {
+            JobVacancy::create($validated);
+            return redirect()->route('job-vacancies.index')->with('success', 'Job vacancy created successfully!');
+        }
+
+        // Company owner
+        $companyId = auth()->user()->company->id;
+        JobVacancy::create([
+            'title' => $validated['title'],
+            'location' => $validated['location'],
+            'salary' => $validated['salary'],
+            'type' => $validated['type'],
+            'description' => $validated['description'],
+            'jobCategoryId' => $validated['jobCategoryId'],
+            'companyId' => $companyId,
+        ]);
         return redirect()->route('job-vacancies.index')->with('success', 'Job vacancy created successfully!');
     }
 

@@ -21,15 +21,27 @@ class JobVacancyCreateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'title' => 'bail|required|string|max:255|',
-            'location' => 'bail|required|string|max:255',
-            'salary' => 'bail|required|numeric|min:0',
-            'type' => 'bail|required|string|max:255',
-            'description' => 'bail|required|string|max:255',
-            'jobCategoryId' => 'bail|required|string|max:255',
-            'companyId' => 'bail|required|string|max:255',
-        ];
+        if (auth()->user()->role == 'admin') {
+            return [
+                'title' => 'bail|required|string|max:255|',
+                'location' => 'bail|required|string|max:255',
+                'salary' => 'bail|required|numeric|min:0',
+                'type' => 'bail|required|string|max:255',
+                'description' => 'bail|required|string|max:255',
+                'jobCategoryId' => 'bail|required|string|max:255',
+                'companyId' => 'bail|required|string|max:255',
+            ];
+        } else if (auth()->user()->role == 'company-owner') {
+            return [
+                'title' => 'bail|required|string|max:255|',
+                'location' => 'bail|required|string|max:255',
+                'salary' => 'bail|required|numeric|min:0',
+                'type' => 'bail|required|string|max:255',
+                'description' => 'bail|required|string|max:255',
+                'jobCategoryId' => 'bail|required|string|max:255',
+                'companyId' => 'bail|string|max:255',
+            ];
+        }
     }
 
     public function messages(): array

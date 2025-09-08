@@ -61,17 +61,19 @@
                     </div>
 
                     {{--                Company Select Dropdown --}}
+                    @if(auth()->user()->role == 'admin')
                     <div class="mb-4">
                         <label for="companyId" class="block text-sm font-medium text-gray-700">Company</label>
-                        <select name="companyId" id="companyId" class="{{ $errors->has('companyId') ? 'outline-red-500 outline outline-1' : '' }} mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                            @foreach($companies as $company)
-                                <option value="{{ $company->id }}" {{ old('companyId') == $company->id ? 'selected' : '' }}>{{ $company->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('companyId')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
+                            <select name="companyId" id="companyId" class="{{ $errors->has('companyId') ? 'outline-red-500 outline outline-1' : '' }} mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                @foreach($companies as $company)
+                                    <option value="{{ $company->id }}" {{ old('companyId') == $company->id ? 'selected' : '' }}>{{ $company->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('companyId')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                     </div>
+                    @endif
 
                     {{--                Job Category Select Dropdown --}}
                     <div class="mb-4">
@@ -99,7 +101,7 @@
 
                     {{--                Action Buttons --}}
                     <div class="flex justify-end space-x-4">
-                        <a href="{{ route('job-vacancies.index') }}" class="inline-flex items-center py-2 bg-white text-gray-500 rounded-md hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
+                        <a href="{{ route('job-vacancies.index') }}" class="inline-flex items-center py-2 text-gray-500 rounded-md hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
                             Cancel
                         </a>
                         <button type="submit" class="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 mt-4 mr-4">
