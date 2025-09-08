@@ -72,6 +72,24 @@ class ResumeAnalysisService
             ];
         }
     }
+
+    public function analyzeResume($jobVacancy, $resumeData)
+    {
+        try {
+            $jobDetails = json_encode([
+                'job_title' => $jobVacancy->title,
+                'job_description' => $jobVacancy->description,
+                'job_location' => $jobVacancy->location,
+                'job_type' => $jobVacancy->type,
+                'job_salary' => $jobVacancy->salary,
+            ]);
+
+            $resumeDetails = json_encode($resumeData);
+        } catch () {
+
+        }
+    }
+
     public function extractTextFromPdf(string $fileUrl): string
     {
         // Reading the file form the cloud to local disk storage in temp file
