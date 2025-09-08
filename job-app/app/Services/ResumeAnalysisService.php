@@ -85,6 +85,22 @@ class ResumeAnalysisService
             ]);
 
             $resumeDetails = json_encode($resumeData);
+
+            $response = OpenAI::chat()->create([
+                'model' => 'gpt-4o',
+                'messages' => [
+                    [
+                        'role' => 'system',
+                        'content' => "Yor are an expert HR professional and job recruiter.
+                            You are given a job job vacancy and a resume.
+                            Your task is to analyze the resume and determine if candidate is a good fit for the job.
+                            The output should be in JSON format.
+                            Provide a score form 0 to 100 for the candidate's suitability for the job, and a detailed feedback.
+                            Response should only be JSON that has the following keys: 'aiGeneratedScore', 'aiGeneratedFeedback'.
+                            AI generated feedback should be detailed and specific to the job and the candidate's resume."
+                    ]
+                ]
+            ])
         } catch () {
 
         }
