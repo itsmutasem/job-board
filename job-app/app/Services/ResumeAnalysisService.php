@@ -126,6 +126,8 @@ class ResumeAnalysisService
                 Log::error('Missing required keys in the parsed result');
                 throw new \Exception('Missing required keys in the parsed result');
             }
+
+            return $parsedResult;
         } catch () {
 
         }
