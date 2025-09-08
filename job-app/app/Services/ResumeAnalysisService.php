@@ -111,6 +111,11 @@ class ResumeAnalysisService
                 ],
                 'temperature' => 0.1
             ]);
+
+            $result = $response->choices[0]->message->content;
+            Log::debug('OpenAI evaluation response: ' . $result);
+
+            $parsedResult = json_decode($result, true);
         } catch () {
 
         }
