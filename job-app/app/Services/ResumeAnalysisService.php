@@ -128,8 +128,12 @@ class ResumeAnalysisService
             }
 
             return $parsedResult;
-        } catch () {
-
+        } catch (\Exception $e) {
+            Log::error('Error analyzing resume: ' . $e->getMessage());
+            return [
+                'aiGeneratedScore' => 0,
+                'aiGeneratedFeedBack' => 'An error occurred while analyzing the resume. Pleas tyr again later.'
+            ];
         }
     }
 
