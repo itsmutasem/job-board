@@ -1,7 +1,41 @@
 <?php
 
-test('example', function () {
-    $response = $this->get('/');
+use App\Models\User;
 
-    $response->assertStatus(200);
+test('Create user that will pass validation', function () {
+    // Arrange
+    $data = [
+        'name' => 'John Doe',
+        'email' => 'john@example.com',
+        'password' => 'password',
+        'role' => 'admin'
+    ];
+
+    // Act
+    $user = User::create($data);
+
+    // Assert
+    expect($user->name)->toBe($data['name']);
+    expect($user->email)->toBe($data['email']);
+    expect($user->role)->toBe($data['role']);
+});
+
+test('Create user that will failed validation', function () {
+    // Arrange
+    $data = [
+        'name' => '',
+        'email' => 'john@example.com',
+    ];
+
+    // Act
+    try {
+        $user = User::create($data);
+        $failed = false;
+    } catch (\Illuminate\Database\QueryException $e) {
+        $failed = true;
+    }
+
+    // Assert
+    expect($failed)->toBeTrue();
+    expect(User::where('email', 'john@example.com')->exists())->toBeFalse();
 });
